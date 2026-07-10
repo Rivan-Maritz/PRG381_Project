@@ -40,3 +40,4 @@ application.properties
 *.bak
 *~
 *.swp
+/target/
