@@ -6,7 +6,7 @@ package com.mycompany.prg381_project.DataLayer;
 
 public class DBConnection {
     private static final String URL = "jdbc:postgresql://localhost:5432/cleaning_inventory_db";
-    private static final String User = "postgre";
+    private static final String User = "postgres";
     private static final String Password = "jamesRamero_54@34";
     
     public static Connection getConnection() throws SQLException {
