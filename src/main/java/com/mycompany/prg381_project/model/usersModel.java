@@ -1,18 +1,28 @@
 package com.mycompany.prg381_project.model;
 
 public class usersModel {
+    private int ID;
     private String username;
     private String password;
     private String email;
     private String role;
 
-    public usersModel(String username, String password, String email, String role) {
+    public usersModel(int ID,String username, String password, String email, String role) {
+        this.ID = ID;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+        
+    }
+    public int getID() {
+        return ID;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -44,6 +54,8 @@ public class usersModel {
     public void setRole(String role) {
         this.role = role;
     }
+
+    
     
     
 }

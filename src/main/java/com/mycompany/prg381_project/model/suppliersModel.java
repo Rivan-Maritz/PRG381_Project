@@ -1,18 +1,28 @@
 package com.mycompany.prg381_project.model;
 
 public class suppliersModel {
+    private int SupplierID;
     private String Name;
     private String Contact;
     private String PhoneNumber;
     private String Email;
     private String Address;
-
-    public suppliersModel(String Name, String Contact, String PhoneNumber, String Email, String Address) {
+    public suppliersModel(){}
+    public suppliersModel(int SupplierID, String Name, String Contact, String PhoneNumber, String Email, String Address) {
+        this.SupplierID = SupplierID;
         this.Name = Name;
         this.Contact = Contact;
         this.PhoneNumber = PhoneNumber;
         this.Email = Email;
         this.Address = Address;
+    }
+
+    public int getSupplierID() {
+        return SupplierID;
+    }
+
+    public void setSupplierID(int SupplierID) {
+        this.SupplierID = SupplierID;
     }
 
     public String getName() {
@@ -54,6 +64,8 @@ public class suppliersModel {
     public void setAddress(String Address) {
         this.Address = Address;
     }
+
+   
     
     
 }

@@ -1,15 +1,18 @@
 package com.mycompany.prg381_project.model;
 
-import java.time.LocalDate;
+
+import java.sql.Date;
 
 public class materialsModel {
-    private String supplierid;
+    private int materialID;
+    private int supplierid;
     private String MName;
     private String type;
     private int stock;
-    private LocalDate dateAdded;
-
-    public materialsModel(String supplierid, String MName, String type, int stock, LocalDate dateAdded) {
+    private Date dateAdded;
+    public materialsModel(){}
+    public materialsModel(int materialID,int supplierid, String MName, String type, int stock, Date dateAdded) {
+        this.materialID = materialID;
         this.supplierid = supplierid;
         this.MName = MName;
         this.type = type;
@@ -17,11 +20,19 @@ public class materialsModel {
         this.dateAdded = dateAdded;
     }
 
-    public String getSupplierid() {
+    public int getMaterialID() {
+        return materialID;
+    }
+
+    public void setMaterialID(int materialID) {
+        this.materialID = materialID;
+    }
+
+    public int getSupplierid() {
         return supplierid;
     }
 
-    public void setSupplierid(String supplierid) {
+    public void setSupplierid(int supplierid) {
         this.supplierid = supplierid;
     }
 
@@ -49,11 +60,11 @@ public class materialsModel {
         this.stock = stock;
     }
 
-    public LocalDate getDateAdded() {
+    public Date getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(LocalDate dateAdded) {
+    public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
     }
     

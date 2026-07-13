@@ -1,22 +1,32 @@
 package com.mycompany.prg381_project.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class stockissuanceModel {
+    private int IssuanceID;
     private String materialid;
     private String cleanerid;
     private String issuedby;
     private int quantity;
-    private LocalDate DateIssued;
+    private Date DateIssued;
     private int remainingstock;
-
-    public stockissuanceModel(String materialid, String cleanerid, String issuedby, int quantity, LocalDate DateIssued, int remainingstock) {
+    public stockissuanceModel(){}
+    public stockissuanceModel(int IssuanceID, String materialid, String cleanerid, String issuedby, int quantity, Date DateIssued, int remainingstock) {
+        this.IssuanceID = IssuanceID;
         this.materialid = materialid;
         this.cleanerid = cleanerid;
         this.issuedby = issuedby;
         this.quantity = quantity;
         this.DateIssued = DateIssued;
         this.remainingstock = remainingstock;
+    }
+
+    public int getIssuanceID() {
+        return IssuanceID;
+    }
+
+    public void setIssuanceID(int IssuanceID) {
+        this.IssuanceID = IssuanceID;
     }
 
     public String getMaterialid() {
@@ -51,11 +61,11 @@ public class stockissuanceModel {
         this.quantity = quantity;
     }
 
-    public LocalDate getDateIssued() {
+    public Date getDateIssued() {
         return DateIssued;
     }
 
-    public void setDateIssued(LocalDate DateIssued) {
+    public void setDateIssued(Date DateIssued) {
         this.DateIssued = DateIssued;
     }
 
@@ -66,6 +76,8 @@ public class stockissuanceModel {
     public void setRemainingstock(int remainingstock) {
         this.remainingstock = remainingstock;
     }
+
+    
     
     
 }
