@@ -6,16 +6,16 @@ package com.mycompany.prg381_project.ui;
 
 /**
  *
- * @author tii6t
+ * @author ASUS
  */
-public class CleanersManagement extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CleanersManagement.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     /**
-     * Creates new form CleanersManagement
+     * Creates new form MainFrame
      */
-    public CleanersManagement() {
+    public MainFrame() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class CleanersManagement extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CleanersManagement().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
