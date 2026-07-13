@@ -26,19 +26,75 @@ public class ReportsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        headingLabel = new javax.swing.JLabel();
+        reportTypeLabel = new javax.swing.JLabel();
+        repGenerateBtn = new javax.swing.JButton();
+        tableScroll = new javax.swing.JScrollPane();
+        reportTable = new javax.swing.JTable();
+        reportTypeCombo = new javax.swing.JComboBox<>();
+
+        headingLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        headingLabel.setText("Reports");
+
+        reportTypeLabel.setText("Report type:");
+
+        repGenerateBtn.setText("Generate");
+
+        reportTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableScroll.setViewportView(reportTable);
+
+        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inventory Report", "Low-Stock Report", "Issuance History", "Material Usage Report" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(reportTypeLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(repGenerateBtn))
+                    .addComponent(headingLabel))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(headingLabel)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reportTypeLabel)
+                    .addComponent(repGenerateBtn)
+                    .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(tableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel headingLabel;
+    private javax.swing.JButton repGenerateBtn;
+    private javax.swing.JTable reportTable;
+    private javax.swing.JComboBox<String> reportTypeCombo;
+    private javax.swing.JLabel reportTypeLabel;
+    private javax.swing.JScrollPane tableScroll;
     // End of variables declaration//GEN-END:variables
 }
