@@ -1,6 +1,6 @@
-package com.mycompany.prg381_project.DataLayer;
+package com.mycompany.prg381_project.Util;
 
-import com.mycompany.prg381_project.DataLayer.DBConnection;
+import com.mycompany.prg381_project.Util.DBConnection;
 import java.sql.Connection;
 import java.sql.SQLException;
 

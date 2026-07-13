@@ -1,4 +1,4 @@
-package com.mycompany.prg381_project.DataLayer;
+package com.mycompany.prg381_project.Util;
 
   import java.sql.Connection;
   import java.sql.DriverManager;
