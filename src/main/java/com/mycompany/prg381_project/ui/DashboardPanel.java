@@ -26,154 +26,156 @@ public class DashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTotalMaterialHeader = new javax.swing.JLabel();
-        lblLowStockHeader = new javax.swing.JLabel();
-        lblTotalCleanersHead = new javax.swing.JLabel();
-        lblRecentIssuances = new javax.swing.JLabel();
-        lblLowStockNum = new javax.swing.JLabel();
-        lblTotalMatNum = new javax.swing.JLabel();
-        lblTotalCleanersNum = new javax.swing.JLabel();
-        lblRecentIssNum = new javax.swing.JLabel();
-        btnNavManMaterial = new javax.swing.JButton();
-        btnNavManSuppliers = new javax.swing.JButton();
-        btnNavIssueStock = new javax.swing.JButton();
-        btnNavManCleaners = new javax.swing.JButton();
-        btnNavViewReport = new javax.swing.JButton();
-        btnLogOut = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        TotalMaterialHeaderlbl = new javax.swing.JLabel();
+        LowStockHeaderlbl = new javax.swing.JLabel();
+        TotalCleanersHeadlbl = new javax.swing.JLabel();
+        RecentIssuanceslbl = new javax.swing.JLabel();
+        LowStockNumlnl = new javax.swing.JLabel();
+        TotalMatNumlbl = new javax.swing.JLabel();
+        TotalCleanersNumlbl = new javax.swing.JLabel();
+        RecentIssNumlbl = new javax.swing.JLabel();
+        NavManMaterialbtn = new javax.swing.JButton();
+        NavManSuppliersbtn = new javax.swing.JButton();
+        NavIssueStockbtn = new javax.swing.JButton();
+        NavManCleanersbtn = new javax.swing.JButton();
+        NavViewReportbtn = new javax.swing.JButton();
+        LogOutbtn = new javax.swing.JButton();
+        SmarterCleanlbl = new javax.swing.JLabel();
 
-        lblTotalMaterialHeader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTotalMaterialHeader.setText("Total Materials: ");
+        TotalMaterialHeaderlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalMaterialHeaderlbl.setText("Total Materials: ");
 
-        lblLowStockHeader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblLowStockHeader.setText("Low-Stock Items: ");
+        LowStockHeaderlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LowStockHeaderlbl.setText("Low-Stock Items: ");
 
-        lblTotalCleanersHead.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTotalCleanersHead.setText("Total Cleaners:");
+        TotalCleanersHeadlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalCleanersHeadlbl.setText("Total Cleaners:");
 
-        lblRecentIssuances.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblRecentIssuances.setText("Recent Issuances: ");
+        RecentIssuanceslbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RecentIssuanceslbl.setText("Recent Issuances: ");
 
-        lblLowStockNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblLowStockNum.setText("0");
+        LowStockNumlnl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LowStockNumlnl.setText("0");
 
-        lblTotalMatNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTotalMatNum.setText("0");
+        TotalMatNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalMatNumlbl.setText("0");
 
-        lblTotalCleanersNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTotalCleanersNum.setText("0");
+        TotalCleanersNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalCleanersNumlbl.setText("0");
 
-        lblRecentIssNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblRecentIssNum.setText("0");
+        RecentIssNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RecentIssNumlbl.setText("0");
 
-        btnNavManMaterial.setText("Manage Materials");
-        btnNavManMaterial.addActionListener(this::btnNavManMaterialActionPerformed);
+        NavManMaterialbtn.setText("Manage Materials");
+        NavManMaterialbtn.addActionListener(this::NavManMaterialbtnActionPerformed);
 
-        btnNavManSuppliers.setText("Manage Suppliers");
-        btnNavManSuppliers.addActionListener(this::btnNavManSuppliersActionPerformed);
+        NavManSuppliersbtn.setText("Manage Suppliers");
+        NavManSuppliersbtn.addActionListener(this::NavManSuppliersbtnActionPerformed);
 
-        btnNavIssueStock.setText("Issue Stock");
-        btnNavIssueStock.addActionListener(this::btnNavIssueStockActionPerformed);
+        NavIssueStockbtn.setText("Issue Stock");
+        NavIssueStockbtn.addActionListener(this::NavIssueStockbtnActionPerformed);
 
-        btnNavManCleaners.setText("Manage Cleaners");
-        btnNavManCleaners.addActionListener(this::btnNavManCleanersActionPerformed);
+        NavManCleanersbtn.setText("Manage Cleaners");
+        NavManCleanersbtn.addActionListener(this::NavManCleanersbtnActionPerformed);
 
-        btnNavViewReport.setText("View Report");
-        btnNavViewReport.addActionListener(this::btnNavViewReportActionPerformed);
+        NavViewReportbtn.setText("View Report");
+        NavViewReportbtn.addActionListener(this::NavViewReportbtnActionPerformed);
 
-        btnLogOut.setText("Log Out");
-        btnLogOut.addActionListener(this::btnLogOutActionPerformed);
+        LogOutbtn.setText("Log Out");
+        LogOutbtn.addActionListener(this::LogOutbtnActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        jLabel1.setText("SMARTER CLEAN");
+        SmarterCleanlbl.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+        SmarterCleanlbl.setText("SMARTER CLEAN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 118, Short.MAX_VALUE)
+                .addComponent(NavManCleanersbtn)
+                .addGap(26, 26, 26)
+                .addComponent(NavManSuppliersbtn)
+                .addGap(18, 18, 18)
+                .addComponent(NavManMaterialbtn)
+                .addGap(18, 18, 18)
+                .addComponent(NavIssueStockbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(NavViewReportbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(btnLogOut))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnNavManSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnNavManMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnNavManCleaners)
-                                    .addComponent(btnNavIssueStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnNavViewReport, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(289, 289, 289)
+                        .addGap(17, 17, 17)
+                        .addComponent(LogOutbtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblTotalCleanersNum)
+                                        .addComponent(TotalCleanersNumlbl)
                                         .addGap(241, 241, 241))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblLowStockNum)
+                                        .addComponent(LowStockNumlnl)
                                         .addGap(242, 242, 242)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblTotalMatNum)
+                                        .addComponent(TotalMatNumlbl)
                                         .addGap(61, 61, 61))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblRecentIssNum)
+                                        .addComponent(RecentIssNumlbl)
                                         .addGap(55, 55, 55))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblLowStockHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblTotalCleanersHead, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(LowStockHeaderlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(TotalCleanersHeadlbl, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(97, 97, 97)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTotalMaterialHeader)
-                                    .addComponent(lblRecentIssuances)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                                    .addComponent(TotalMaterialHeaderlbl)
+                                    .addComponent(RecentIssuanceslbl))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLowStockHeader)
-                            .addComponent(lblTotalMaterialHeader))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLowStockNum)
-                            .addComponent(lblTotalMatNum))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTotalCleanersHead)
-                            .addComponent(lblRecentIssuances))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTotalCleanersNum)
-                            .addComponent(lblRecentIssNum))
-                        .addGap(287, 287, 287)
-                        .addComponent(btnLogOut))
+                        .addGap(382, 382, 382)
+                        .addComponent(LogOutbtn)
+                        .addContainerGap(13, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNavManCleaners)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnNavManSuppliers)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LowStockHeaderlbl)
+                            .addComponent(TotalMaterialHeaderlbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LowStockNumlnl)
+                            .addComponent(TotalMatNumlbl))
                         .addGap(42, 42, 42)
-                        .addComponent(btnNavManMaterial)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnNavIssueStock)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnNavViewReport)))
-                .addGap(71, 71, 71))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TotalCleanersHeadlbl)
+                            .addComponent(RecentIssuanceslbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TotalCleanersNumlbl)
+                            .addComponent(RecentIssNumlbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NavManCleanersbtn)
+                            .addComponent(NavManSuppliersbtn)
+                            .addComponent(NavManMaterialbtn)
+                            .addComponent(NavIssueStockbtn)
+                            .addComponent(NavViewReportbtn))
+                        .addGap(86, 86, 86))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,31 +191,31 @@ public class DashboardPanel extends javax.swing.JPanel {
  */     
     
     
-    private void btnNavManCleanersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavManCleanersActionPerformed
+    private void NavManCleanersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManCleanersbtnActionPerformed
         
         
-    }//GEN-LAST:event_btnNavManCleanersActionPerformed
+    }//GEN-LAST:event_NavManCleanersbtnActionPerformed
 
-    private void btnNavViewReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavViewReportActionPerformed
+    private void NavViewReportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavViewReportbtnActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_btnNavViewReportActionPerformed
+    }//GEN-LAST:event_NavViewReportbtnActionPerformed
 
-    private void btnNavManSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavManSuppliersActionPerformed
+    private void NavManSuppliersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManSuppliersbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNavManSuppliersActionPerformed
+    }//GEN-LAST:event_NavManSuppliersbtnActionPerformed
 
-    private void btnNavManMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavManMaterialActionPerformed
+    private void NavManMaterialbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManMaterialbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNavManMaterialActionPerformed
+    }//GEN-LAST:event_NavManMaterialbtnActionPerformed
 
-    private void btnNavIssueStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavIssueStockActionPerformed
+    private void NavIssueStockbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavIssueStockbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNavIssueStockActionPerformed
+    }//GEN-LAST:event_NavIssueStockbtnActionPerformed
 
-    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+    private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogOutActionPerformed
+    }//GEN-LAST:event_LogOutbtnActionPerformed
 
 
     
@@ -240,20 +242,20 @@ public class DashboardPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnNavIssueStock;
-    private javax.swing.JButton btnNavManCleaners;
-    private javax.swing.JButton btnNavManMaterial;
-    private javax.swing.JButton btnNavManSuppliers;
-    private javax.swing.JButton btnNavViewReport;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblLowStockHeader;
-    private javax.swing.JLabel lblLowStockNum;
-    private javax.swing.JLabel lblRecentIssNum;
-    private javax.swing.JLabel lblRecentIssuances;
-    private javax.swing.JLabel lblTotalCleanersHead;
-    private javax.swing.JLabel lblTotalCleanersNum;
-    private javax.swing.JLabel lblTotalMatNum;
-    private javax.swing.JLabel lblTotalMaterialHeader;
+    private javax.swing.JButton LogOutbtn;
+    private javax.swing.JLabel LowStockHeaderlbl;
+    private javax.swing.JLabel LowStockNumlnl;
+    private javax.swing.JButton NavIssueStockbtn;
+    private javax.swing.JButton NavManCleanersbtn;
+    private javax.swing.JButton NavManMaterialbtn;
+    private javax.swing.JButton NavManSuppliersbtn;
+    private javax.swing.JButton NavViewReportbtn;
+    private javax.swing.JLabel RecentIssNumlbl;
+    private javax.swing.JLabel RecentIssuanceslbl;
+    private javax.swing.JLabel SmarterCleanlbl;
+    private javax.swing.JLabel TotalCleanersHeadlbl;
+    private javax.swing.JLabel TotalCleanersNumlbl;
+    private javax.swing.JLabel TotalMatNumlbl;
+    private javax.swing.JLabel TotalMaterialHeaderlbl;
     // End of variables declaration//GEN-END:variables
 }
