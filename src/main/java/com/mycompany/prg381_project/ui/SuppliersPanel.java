@@ -26,45 +26,40 @@ public class SuppliersPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jLabel1 = new javax.swing.JLabel();
+        addSupBtn = new javax.swing.JButton();
+        lblClearButton = new javax.swing.JLabel();
+        updateSupBtn = new javax.swing.JButton();
+        deleteSupBtn = new javax.swing.JButton();
+        clearSupBtn = new javax.swing.JButton();
+        lblAddButton = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        suppliersTable = new javax.swing.JTable();
+        lblUpdateButton = new javax.swing.JLabel();
+        lblDeleteButton = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblContact = new javax.swing.JLabel();
+        supNameTxt = new javax.swing.JTextField();
+        supContactTxt = new javax.swing.JTextField();
 
-        jButton1.setText("Add");
-        jButton1.setName("BtnAdd"); // NOI18N
+        addSupBtn.setText("Add");
+        addSupBtn.setName("addSupBtn"); // NOI18N
 
-        jLabel4.setText("Clear Button");
-        jLabel4.setName("lblClearButton"); // NOI18N
+        lblClearButton.setText("Clear Button");
+        lblClearButton.setName("lblClearButton"); // NOI18N
 
-        jButton2.setText("Update");
-        jButton2.setName("BtnUpdate"); // NOI18N
+        updateSupBtn.setText("Update");
+        updateSupBtn.setName("updateSupBtn"); // NOI18N
 
-        jButton3.setText("Delete");
-        jButton3.setName("BtnDelete"); // NOI18N
+        deleteSupBtn.setText("Delete");
+        deleteSupBtn.setName("deleteSupBtn"); // NOI18N
 
-        jButton4.setText("CLEAR");
-        jButton4.setName("BtnClear"); // NOI18N
+        clearSupBtn.setText("CLEAR");
+        clearSupBtn.setName("clearSupBtn"); // NOI18N
 
-        jTextPane1.setName("txt"); // NOI18N
-        jScrollPane2.setViewportView(jTextPane1);
+        lblAddButton.setText("Add Button");
+        lblAddButton.setName("lblAddButton"); // NOI18N
 
-        jScrollPane3.setViewportView(jTextPane2);
-
-        jLabel1.setText("Add Button");
-        jLabel1.setName("lblAddButton"); // NOI18N
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        suppliersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,85 +70,101 @@ public class SuppliersPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setName(""); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        suppliersTable.setName("suppliersTable"); // NOI18N
+        jScrollPane1.setViewportView(suppliersTable);
 
-        jLabel2.setText("Update Button");
-        jLabel2.setName("lblUpdateButton"); // NOI18N
+        lblUpdateButton.setText("Update Button");
+        lblUpdateButton.setName("lblUpdateButton"); // NOI18N
 
-        jLabel3.setText("Delete Button");
-        jLabel3.setName("lblDeleteButton"); // NOI18N
+        lblDeleteButton.setText("Delete Button");
+        lblDeleteButton.setName("lblDeleteButton"); // NOI18N
+
+        lblName.setText("Name");
+        lblName.setName("lblName"); // NOI18N
+
+        lblContact.setText("Contact");
+        lblContact.setToolTipText("");
+        lblContact.setName("lblContact"); // NOI18N
+
+        supNameTxt.setText("jTextField1");
+        supNameTxt.setName("supNameTxt"); // NOI18N
+
+        supContactTxt.setText("jTextField2");
+        supContactTxt.setName("supContactTxt"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblName)
+                    .addComponent(clearSupBtn)
+                    .addComponent(deleteSupBtn)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                        .addComponent(addSupBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updateSupBtn, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUpdateButton)
+                    .addComponent(lblDeleteButton)
+                    .addComponent(lblClearButton)
+                    .addComponent(lblContact)
+                    .addComponent(supNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(supContactTxt))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(supNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(lblContact)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(supContactTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblAddButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addSupBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(lblUpdateButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updateSupBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDeleteButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteSupBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblClearButton)
                         .addGap(10, 10, 10)
-                        .addComponent(jButton4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(clearSupBtn)))
                 .addGap(60, 60, 60))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton addSupBtn;
+    private javax.swing.JButton clearSupBtn;
+    private javax.swing.JButton deleteSupBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JLabel lblAddButton;
+    private javax.swing.JLabel lblClearButton;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblDeleteButton;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblUpdateButton;
+    private javax.swing.JTextField supContactTxt;
+    private javax.swing.JTextField supNameTxt;
+    private javax.swing.JTable suppliersTable;
+    private javax.swing.JButton updateSupBtn;
     // End of variables declaration//GEN-END:variables
 }
