@@ -57,5 +57,5 @@ public class usersDAO {
             ex.printStackTrace();
             return false;
         }
-
+    }
 }
