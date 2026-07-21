@@ -1,11 +1,17 @@
 package com.mycompany.prg381_project.model;
 
-public class cleanerModel {
+public class cleanerModel extends personModel {
     private String PhoneNumber;
     private String Name;
     private int id;
     
     public cleanerModel(){};
+    
+    @Override
+    public String getRole(){
+        return "Cleaner";
+    }
+    
     public cleanerModel(String PhoneNumber, String Name, int id) {
         this.PhoneNumber = PhoneNumber;
         this.Name = Name;
@@ -19,7 +25,8 @@ public class cleanerModel {
     public void setPhoneNumber(String PhoneNumber) {
         this.PhoneNumber = PhoneNumber;
     }
-
+    
+    @Override
     public String getName() {
         return Name;
     }
@@ -28,7 +35,8 @@ public class cleanerModel {
         this.Name = Name;
     }
 
-    public int getId() {
+    @Override
+    public int getID() {
         return id;
     }
 
