@@ -8,12 +8,12 @@ package com.mycompany.prg381_project.ui;
  *
  * @author ASUS
  */
-public class LoginPanel extends javax.swing.JPanel {
+public class StockIssurancePanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form LoginPanel
+     * Creates new form StockIssurancePanel
      */
-    public LoginPanel() {
+    public StockIssurancePanel() {
         initComponents();
     }
 
