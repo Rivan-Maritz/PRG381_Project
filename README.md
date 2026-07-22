@@ -95,7 +95,7 @@ This project was developed by a team of 5, divided across backend and frontend r
 
 | Role | Members | Responsibilities |
 |---|---|---|
-| **Backend Development** | Rivan Maritz, Jared Nicholas Swanepoel | Database design, JDBC connectivity, DAO classes, business logic, stock issuance rules, validation |
+| **Backend Development** | Rivan Maritz, Jared Nicholas Swanepoel,Michiel Coenraad TerBlanche | Database design, JDBC connectivity, DAO classes, business logic, stock issuance rules, validation |
 | **Frontend Development** | Tumelo Bapela, Jimmy Junior Baloyi, Tiisetso Keraetswe | Swing UI screens, NetBeans form design, navigation, dashboard, reports display, UI/UX consistency |
 
 All members contributed to integration, testing, and are able to explain their respective contributions to the codebase.
