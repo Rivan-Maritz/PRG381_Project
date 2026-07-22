@@ -41,6 +41,8 @@ public class CleanersPanel extends javax.swing.JPanel {
         deleteCleanerBtn = new javax.swing.JButton();
         clearCleanerBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(189, 224, 254));
+
         cleanersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
