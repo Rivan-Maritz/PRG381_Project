@@ -99,7 +99,7 @@ public class materialsDAO {
                 ps.setString(3, mm.getType());
                 ps.setInt(4, mm.getStock());
                 ps.setInt(5, mm.getReorderLevel());
-                ps.setInt(5, mm.getMaterialID());
+                ps.setInt(6, mm.getMaterialID());
                 
                 int rows = ps.executeUpdate();
                 ps.close();

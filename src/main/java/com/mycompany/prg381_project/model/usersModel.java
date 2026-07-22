@@ -6,7 +6,7 @@ public class usersModel extends personModel{
     private String password;
     private String email;
     private String role;
-
+    public usersModel() {}
     public usersModel(int ID,String username, String password, String email, String role) {
         this.ID = ID;
         this.username = username;
