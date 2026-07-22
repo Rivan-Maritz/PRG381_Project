@@ -1,6 +1,6 @@
 package com.mycompany.prg381_project.model;
 
-public class suppliersModel {
+public class suppliersModel extends personModel{
     private int SupplierID;
     private String Name;
     private String Contact;
@@ -8,6 +8,17 @@ public class suppliersModel {
     private String Email;
     private String Address;
     public suppliersModel(){}
+    
+    @Override
+    public int getID() {
+        return SupplierID;
+    }
+    
+    @Override
+    public String getRole(){
+        return "Supplier";
+    }
+    
     public suppliersModel(int SupplierID, String Name, String Contact, String PhoneNumber, String Email, String Address) {
         this.SupplierID = SupplierID;
         this.Name = Name;
@@ -24,7 +35,8 @@ public class suppliersModel {
     public void setSupplierID(int SupplierID) {
         this.SupplierID = SupplierID;
     }
-
+    
+    @Override
     public String getName() {
         return Name;
     }
@@ -64,8 +76,5 @@ public class suppliersModel {
     public void setAddress(String Address) {
         this.Address = Address;
     }
-
    
-    
-    
 }

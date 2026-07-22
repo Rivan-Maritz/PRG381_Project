@@ -1,6 +1,6 @@
 package com.mycompany.prg381_project.model;
 
-public class usersModel {
+public class usersModel extends personModel{
     private int ID;
     private String username;
     private String password;
@@ -15,8 +15,15 @@ public class usersModel {
         this.role = role;
         
     }
+    
+    @Override
     public int getID() {
         return ID;
+    }
+    
+    @Override
+    public String getName(){
+        return username;
     }
 
     public void setID(int ID) {
@@ -47,6 +54,7 @@ public class usersModel {
         this.email = email;
     }
 
+    @Override
     public String getRole() {
         return role;
     }

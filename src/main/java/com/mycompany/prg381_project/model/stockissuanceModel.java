@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class stockissuanceModel {
     private int IssuanceID;
-    private String materialid;
-    private String cleanerid;
-    private String issuedby;
+    private int materialid;
+    private int cleanerid;
+    private int issuedby;
     private int quantity;
     private Date DateIssued;
     private int remainingstock;
     public stockissuanceModel(){}
-    public stockissuanceModel(int IssuanceID, String materialid, String cleanerid, String issuedby, int quantity, Date DateIssued, int remainingstock) {
+    public stockissuanceModel(int IssuanceID, int materialid, int cleanerid, int issuedby, int quantity, Date DateIssued, int remainingstock) {
         this.IssuanceID = IssuanceID;
         this.materialid = materialid;
         this.cleanerid = cleanerid;
@@ -29,27 +29,27 @@ public class stockissuanceModel {
         this.IssuanceID = IssuanceID;
     }
 
-    public String getMaterialid() {
+    public int getMaterialid() {
         return materialid;
     }
 
-    public void setMaterialid(String materialid) {
+    public void setMaterialid(int materialid) {
         this.materialid = materialid;
     }
 
-    public String getCleanerid() {
+    public int getCleanerid() {
         return cleanerid;
     }
 
-    public void setCleanerid(String cleanerid) {
+    public void setCleanerid(int cleanerid) {
         this.cleanerid = cleanerid;
     }
 
-    public String getIssuedby() {
+    public int getIssuedby() {
         return issuedby;
     }
 
-    public void setIssuedby(String issuedby) {
+    public void setIssuedby(int issuedby) {
         this.issuedby = issuedby;
     }
 

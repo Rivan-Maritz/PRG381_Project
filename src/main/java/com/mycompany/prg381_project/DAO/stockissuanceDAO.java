@@ -26,15 +26,16 @@ public class stockissuanceDAO {
         {
             Connection con = DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, stm.getMaterialid());
-            ps.setString(2, stm.getCleanerid());
-            ps.setString(3, stm.getIssuedby());
+            ps.setInt(1, stm.getMaterialid());
+            ps.setInt(2, stm.getCleanerid());
+            ps.setInt(3, stm.getIssuedby());
             ps.setInt(4, stm.getQuantity());
             ps.setDate(5, stm.getDateIssued());
             ps.setInt(6, stm.getRemainingstock());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
+            
             return rows>0;
         }catch(SQLException ex)
         {
@@ -56,8 +57,9 @@ public class stockissuanceDAO {
                 if (rs.next()) {
                     return MapRowToStockIssuance(rs);
                 }
-                con.close();
                 ps.close();
+                con.close();
+                
                 
             }
                 
@@ -79,8 +81,9 @@ public class stockissuanceDAO {
             while (rs.next()) {
                 StockIssuance.add(MapRowToStockIssuance(rs));
             }
-            con.close();
             ps.close();
+            con.close();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -94,14 +97,15 @@ public class stockissuanceDAO {
         {
             Connection con = DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, stm.getMaterialid());
-            ps.setString(2, stm.getCleanerid());
-            ps.setString(3, stm.getIssuedby());
+            ps.setInt(1, stm.getMaterialid());
+            ps.setInt(2, stm.getCleanerid());
+            ps.setInt(3, stm.getIssuedby());
             ps.setInt(4, stm.getQuantity());
             ps.setInt(5, stm.getIssuanceID());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
+            
             return rows>0;
         }catch(SQLException ex)
         {
@@ -118,8 +122,9 @@ public class stockissuanceDAO {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 int rows = ps.executeUpdate();
-                con.close();
                 ps.close();
+                con.close();
+                
                 return rows>0;
                 
             }catch(SQLException ex)
@@ -134,9 +139,9 @@ public class stockissuanceDAO {
     {
         stockissuanceModel stm = new stockissuanceModel();
         stm.setIssuanceID(rs.getInt("IssuanceID"));
-        stm.setMaterialid(rs.getString("MaterialID"));
-        stm.setCleanerid(rs.getString("CleanerID"));
-        stm.setIssuedby(rs.getString("IssuedBy"));
+        stm.setMaterialid(rs.getInt("MaterialID"));
+        stm.setCleanerid(rs.getInt("CleanerID"));
+        stm.setIssuedby(rs.getInt("IssuedBy"));
         stm.setQuantity(rs.getInt("Quantity"));
         stm.setDateIssued(rs.getDate("DateIssued"));
         stm.setRemainingstock(rs.getInt("RemainingStock"));
