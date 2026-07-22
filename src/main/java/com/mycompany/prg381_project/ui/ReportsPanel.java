@@ -33,6 +33,8 @@ public class ReportsPanel extends javax.swing.JPanel {
         reportTable = new javax.swing.JTable();
         reportTypeCombo = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(189, 224, 254));
+
         headingLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         headingLabel.setText("Reports");
 
