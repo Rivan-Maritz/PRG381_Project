@@ -44,6 +44,17 @@ public class DashboardPanel extends javax.swing.JPanel {
         LowStockNumlnl.setText(String.valueOf(lowStockCount));
         TotalCleanersNumlbl.setText(String.valueOf(totalCleaners));
         RecentIssNumlbl.setText(String.valueOf(totalIssuances));
+
+        // Grey out navigation to screens the current role isn't allowed to open,
+        // so a Storekeeper sees the restriction directly rather than discovering
+        // it only after clicking through.
+        if (mainFrame != null) {
+            NavManMaterialbtn.setEnabled(mainFrame.canAccess(MainFrame.MATERIALS));
+            NavManSuppliersbtn.setEnabled(mainFrame.canAccess(MainFrame.SUPPLIERS));
+            NavManCleanersbtn.setEnabled(mainFrame.canAccess(MainFrame.CLEANERS));
+            NavIssueStockbtn.setEnabled(mainFrame.canAccess(MainFrame.STOCK_ISSUANCE));
+            NavViewReportbtn.setEnabled(mainFrame.canAccess(MainFrame.REPORTS));
+        }
     }
 
     /**

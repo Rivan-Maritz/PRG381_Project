@@ -4,7 +4,9 @@
  */
 package com.mycompany.prg381_project.ui;
 
+import com.mycompany.prg381_project.BusinessLayer.AccessControlService;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -27,6 +29,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private final CardLayout cardLayout;
     private final JPanel container;
+    private final AccessControlService accessControlService = new AccessControlService();
 
     private final LoginPanel loginPanel;
     private final DashboardPanel dashboardPanel;
@@ -36,10 +39,10 @@ public class MainFrame extends javax.swing.JFrame {
     private final StockIssuancePanel stockIssuancePanel;
     private final ReportsPanel reportsPanel;
 
-    // Simple session tracking: who is currently logged in.
-    // (Full role-based access control is a separate, later task.)
+    // Session tracking: who is currently logged in and what they're allowed to do.
     private int currentUserId = -1;
     private String currentUsername = null;
+    private String currentRole = null;
 
     public MainFrame() {
         initComponents();
@@ -83,8 +86,21 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Switches to the named panel, refreshing its data from the database
      * first so it never shows stale information from a previous visit.
+     * If the current user's role isn't permitted to open this screen, shows
+     * a message and stays on the dashboard instead.
      */
     public void showPanel(String name) {
+        if (!LOGIN.equals(name) && !accessControlService.canAccess(currentRole, name)) {
+            JOptionPane.showMessageDialog(this,
+                "Your role (" + currentRole + ") doesn't have access to that screen.",
+                "Access Denied", JOptionPane.WARNING_MESSAGE);
+            if (!DASHBOARD.equals(name)) {
+                dashboardPanel.refreshStats();
+                cardLayout.show(container, DASHBOARD);
+            }
+            return;
+        }
+
         switch (name) {
             case DASHBOARD:
                 dashboardPanel.refreshStats();
@@ -110,14 +126,16 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout.show(container, name);
     }
 
-    public void setCurrentUser(String username, int userId) {
+    public void setCurrentUser(String username, int userId, String role) {
         this.currentUsername = username;
         this.currentUserId = userId;
+        this.currentRole = role;
     }
 
     public void clearCurrentUser() {
         this.currentUsername = null;
         this.currentUserId = -1;
+        this.currentRole = null;
     }
 
     public int getCurrentUserId() {
@@ -126,6 +144,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     public String getCurrentUsername() {
         return currentUsername;
+    }
+
+    public String getCurrentRole() {
+        return currentRole;
+    }
+
+    /** Convenience check panels can use directly, e.g. to disable a nav button. */
+    public boolean canAccess(String screen) {
+        return accessControlService.canAccess(currentRole, screen);
     }
 
     @SuppressWarnings("unchecked")

@@ -146,25 +146,18 @@ public class LoginPanel extends javax.swing.JPanel {
         String username = usernametxtfld.getText().trim();
         String password = new String(passwordPwdfld.getPassword());
 
+        UsersService.LoggedInUser loggedInUser;
         try {
-            boolean success = usersService.login(username, password);
-            if (!success) {
-                javax.swing.JOptionPane.showMessageDialog(this,
-                    "Incorrect username or password.",
-                    "Login Failed",
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
-                passwordPwdfld.setText("");
-                return;
-            }
+            loggedInUser = usersService.login(username, password);
         } catch (BusinessException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(),
-                "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                "Login Failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+            passwordPwdfld.setText("");
             return;
         }
 
-        int userId = usersService.getUserId(username);
         if (mainFrame != null) {
-            mainFrame.setCurrentUser(username, userId);
+            mainFrame.setCurrentUser(loggedInUser.username, loggedInUser.id, loggedInUser.role);
         }
 
         usernametxtfld.setText("");

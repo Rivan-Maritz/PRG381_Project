@@ -14,15 +14,40 @@ public class UsersService {
 
     private final usersDAO dao = new usersDAO();
 
-    public boolean login(String username, String password) throws BusinessException {
+    /** The authenticated user's session-relevant details. */
+    public static class LoggedInUser {
+        public final int id;
+        public final String username;
+        public final String role;
+
+        public LoggedInUser(int id, String username, String role) {
+            this.id = id;
+            this.username = username;
+            this.role = role;
+        }
+    }
+
+    /**
+     * Verifies the username/password and returns the logged-in user's id,
+     * username, and role. Throws BusinessException (with a message safe to
+     * show directly) if the fields are empty or the credentials are wrong -
+     * the UI does not need its own separate "incorrect password" message.
+     */
+    public LoggedInUser login(String username, String password) throws BusinessException {
         if (isBlank(username) || isBlank(password)) {
             throw new BusinessException("Please enter both a username and a password.");
         }
-        return dao.LoginUser(username.trim(), password);
-    }
-
-    public int getUserId(String username) {
-        return dao.getUserIdByUsername(username);
+        String cleanUsername = username.trim();
+        boolean valid = dao.LoginUser(cleanUsername, password);
+        if (!valid) {
+            throw new BusinessException("Incorrect username or password.");
+        }
+        usersModel user = dao.findByUsername(cleanUsername);
+        if (user == null) {
+            // Shouldn't happen if LoginUser just succeeded, but fail safely.
+            throw new BusinessException("Incorrect username or password.");
+        }
+        return new LoggedInUser(user.getID(), user.getUsername(), user.getRole());
     }
 
     /**

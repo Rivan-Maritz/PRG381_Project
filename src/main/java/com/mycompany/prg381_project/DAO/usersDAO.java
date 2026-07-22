@@ -113,4 +113,29 @@ public class usersDAO {
         }
         return -1;
     }
+
+    // Returns UserID, Username, Email, and Role for a given username (no
+    // password), or null if not found. Used right after a successful login
+    // so the session can track both who is logged in and what role-based
+    // permissions apply.
+    public usersModel findByUsername(String username) {
+        String sql = "SELECT UserID, Username, Email, Role FROM Users WHERE Username = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    usersModel u = new usersModel();
+                    u.setID(rs.getInt("UserID"));
+                    u.setUsername(rs.getString("Username"));
+                    u.setEmail(rs.getString("Email"));
+                    u.setRole(rs.getString("Role"));
+                    return u;
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }
