@@ -119,24 +119,7 @@ public class DashboardPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(TotalCleanersNumlbl)
-                                        .addGap(241, 241, 241))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(LowStockNumlnl)
-                                        .addGap(242, 242, 242)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TotalMatNumlbl)
-                                        .addGap(61, 61, 61))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(RecentIssNumlbl)
-                                        .addGap(55, 55, 55))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(LowStockHeaderlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -145,7 +128,25 @@ public class DashboardPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(TotalMaterialHeaderlbl)
                                     .addComponent(RecentIssuanceslbl)
-                                    .addComponent(LogOutbtn))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LogOutbtn)
+                                        .addGap(14, 14, 14))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(LowStockNumlnl))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(71, 71, 71)
+                                        .addComponent(TotalCleanersNumlbl)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TotalMatNumlbl)
+                                        .addGap(61, 61, 61))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(RecentIssNumlbl)
+                                        .addGap(55, 55, 55)))))
                         .addGap(79, 79, 79))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(dashboardlbl)
@@ -188,9 +189,9 @@ public class DashboardPanel extends javax.swing.JPanel {
                             .addComponent(RecentIssNumlbl))))
                 .addGap(18, 18, 18)
                 .addComponent(NavViewReportbtn)
-                .addGap(46, 46, 46)
+                .addGap(53, 53, 53)
                 .addComponent(LogOutbtn)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,17 +256,14 @@ public class DashboardPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_NavManSuppliersbtnActionPerformed
 
     private void NavManMaterialbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManMaterialbtnActionPerformed
-        // TODO add your handling code here:
-                    // 1. Find the MainFrame that holds everything
+       
     javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-    // 2. Wipe the current screen clear
+   
     parentFrame.getContentPane().removeAll();
 
-    // 3. Load the new screen (CHANGE THE CLASS NAME HERE)
     parentFrame.getContentPane().add(new MaterialsPanel(), java.awt.BorderLayout.CENTER);
 
-    // 4. Force the frame to refresh and show the new screen
     parentFrame.revalidate();
     parentFrame.repaint();
     }//GEN-LAST:event_NavManMaterialbtnActionPerformed
@@ -288,7 +286,15 @@ parentFrame.repaint();
 
     private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+    
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    parentFrame.getContentPane().removeAll();
+
+    parentFrame.getContentPane().add(new LoginPanel(), java.awt.BorderLayout.CENTER);
+
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_LogOutbtnActionPerformed
 
 

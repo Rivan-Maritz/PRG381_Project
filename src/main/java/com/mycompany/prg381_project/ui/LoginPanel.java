@@ -45,6 +45,7 @@ public class LoginPanel extends javax.swing.JPanel {
         systemloginHeadlbl = new javax.swing.JLabel();
         passwordPwdfld = new javax.swing.JPasswordField();
         lblWelcome = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(189, 224, 254));
         setName("LoginPanel"); // NOI18N
@@ -62,42 +63,53 @@ public class LoginPanel extends javax.swing.JPanel {
         systemloginHeadlbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         systemloginHeadlbl.setText("System Login");
 
-        lblWelcome.setFont(new java.awt.Font("Simplex_IV50", 1, 48)); // NOI18N
+        lblWelcome.setFont(new java.awt.Font("Simplex_IV50", 1, 36)); // NOI18N
         lblWelcome.setText("Welcome to Smarter Clean");
+
+        exitBtn.setText("Exit ");
+        exitBtn.addActionListener(this::exitBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitBtn)
+                .addGap(74, 74, 74))
             .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(systemloginHeadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(systemloginHeadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(usernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(passwordlbl, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(usernametxtfld)
+                                            .addComponent(passwordPwdfld, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(24, 24, 24))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(passwordlbl, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(usernametxtfld)
-                                    .addComponent(passwordPwdfld, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(24, 24, 24))
+                                .addComponent(loginbtn)
+                                .addGap(66, 66, 66)
+                                .addComponent(clearbtn))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(loginbtn)
-                        .addGap(66, 66, 66)
-                        .addComponent(clearbtn)))
-                .addContainerGap(351, Short.MAX_VALUE))
-            .addComponent(lblWelcome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(118, 118, 118)
+                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(systemloginHeadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -112,7 +124,9 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearbtn)
                     .addComponent(loginbtn))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addComponent(exitBtn)
+                .addGap(69, 69, 69))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,9 +169,15 @@ public class LoginPanel extends javax.swing.JPanel {
         parentFrame.repaint();
     }//GEN-LAST:event_loginbtnActionPerformed
 
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearbtn;
+    private javax.swing.JButton exitBtn;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JButton loginbtn;
     private javax.swing.JPasswordField passwordPwdfld;
