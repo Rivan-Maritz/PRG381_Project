@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS StockIssuance CASCADE;
 DROP TABLE IF EXISTS Materials CASCADE;
 DROP TABLE IF EXISTS Suppliers CASCADE;
 DROP TABLE IF EXISTS Cleaners CASCADE;
+DROP TABLE IF EXISTS Users CASCADE;
 
 CREATE TABLE Users (
     UserID      SERIAL PRIMARY KEY,
@@ -64,12 +65,13 @@ CREATE INDEX idx_cleaners_name ON Cleaners(Name);
 CREATE INDEX idx_issuance_date ON StockIssuance(DateIssued);
 
 --Test Data
+-- All 5 accounts below use the password: Password123
 INSERT INTO Users (Username, Password, Email, Role) VALUES
-('jdoe',      'hashed_pw_1', 'jdoe@university.ac.za',      'Supervisor'),
-('mkhumalo',  'hashed_pw_2', 'mkhumalo@university.ac.za',  'Storekeeper'),
-('tnkosi',    'hashed_pw_3', 'tnkosi@university.ac.za',    'Storekeeper'),
-('rmaritz',   'hashed_pw_4', 'rmaritz@university.ac.za',   'Supervisor'),
-('lventer',   'hashed_pw_5', 'lventer@university.ac.za',   'Storekeeper');
+('jdoe',      '$2a$12$kLGi7S1RzjUoTZ4EqYh9A.ZJoyn81qY0R2xWoNdtGSsRKi3FkN3ji', 'jdoe@university.ac.za',      'Supervisor'),
+('mkhumalo',  '$2a$12$VHxr1USxPozM.r1ssARmwOeb6Ny3fBzbBLN7JRDRc7jvkxz2sdPfG', 'mkhumalo@university.ac.za',  'Storekeeper'),
+('tnkosi',    '$2a$12$nOnUGjC4jwWUYp9HyputTety3GqVGmIRsb6Rsx41v.zwOQkeMuLyG', 'tnkosi@university.ac.za',    'Storekeeper'),
+('rmaritz',   '$2a$12$zE58JbQEJ6lnMDyciO/ALuhO70Ejy53Fodg5aIFejeMV8UFjsfsVe', 'rmaritz@university.ac.za',   'Supervisor'),
+('lventer',   '$2a$12$nLKDUHUopIAUNckE0sAyVOgcc7xJ1000WY3udYkEGKqdnoNgs2Geq', 'lventer@university.ac.za',   'Storekeeper');
 
 INSERT INTO Cleaners (Name, PhoneNumber) VALUES
 ('Sipho Dlamini',    '0821234567'),
@@ -95,17 +97,23 @@ INSERT INTO Suppliers (SupplierName, Contact, PhoneNumber, Email, Address) VALUE
 ('FreshLine Supplies',        'Bongani Khumalo','0123322110', 'orders@freshline.co.za',     '22 Supply Ave, Wonderboom'),
 ('SafeGuard Chemicals',       'Elna Coetzee',   '0119654321', 'info@safeguardchem.co.za',   '64 Industria St, Pretoria West');
 
-INSERT INTO Materials (SupplierID, MaterialName, Type, Stock, DateAdded) VALUES
-(1,  'Multi-Surface Cleaner',   'Liquid',       50, '2026-01-10'),
-(2,  'Disinfectant Spray',       'Liquid',       30, '2026-01-12'),
-(3,  'Toilet Paper (Bulk Pack)', 'Paper',       200, '2026-01-15'),
-(4,  'Floor Mop',                 'Equipment',    15, '2026-02-01'),
-(5,  'Rubber Gloves (Box)',       'PPE',          40, '2026-02-05'),
-(6,  'Glass Cleaner',             'Liquid',       25, '2026-02-10'),
-(7,  'Trash Bags (Roll)',         'Consumable',   80, '2026-02-15'),
-(8,  'Dustpan and Brush',         'Equipment',    12, '2026-03-01'),
-(9,  'Hand Soap Refill',          'Liquid',       60, '2026-03-05'),
-(10, 'Air Freshener Spray',       'Liquid',       20, '2026-03-10');
+-- Stock values below are the CURRENT stock, i.e. already net of the
+-- StockIssuance rows further down (each material here had exactly one
+-- issuance already happen against it). ReorderLevel is set explicitly so
+-- 3 materials (Floor Mop, Dustpan and Brush, Air Freshener Spray) sit at
+-- or below their reorder point - so the Low-Stock report/dashboard has
+-- something to actually show during a demo instead of coming back empty.
+INSERT INTO Materials (SupplierID, MaterialName, Type, Stock, ReorderLevel, DateAdded) VALUES
+(1,  'Multi-Surface Cleaner',   'Liquid',      45,  15, '2026-01-10'),
+(2,  'Disinfectant Spray',      'Liquid',      27,  15, '2026-01-12'),
+(3,  'Toilet Paper (Bulk Pack)','Paper',       180, 50, '2026-01-15'),
+(4,  'Floor Mop',               'Equipment',   13,  15, '2026-02-01'),
+(5,  'Rubber Gloves (Box)',     'PPE',         30,  15, '2026-02-05'),
+(6,  'Glass Cleaner',           'Liquid',      21,  15, '2026-02-10'),
+(7,  'Trash Bags (Roll)',       'Consumable',  65,  20, '2026-02-15'),
+(8,  'Dustpan and Brush',       'Equipment',   11,  12, '2026-03-01'),
+(9,  'Hand Soap Refill',        'Liquid',      52,  20, '2026-03-05'),
+(10, 'Air Freshener Spray',     'Liquid',      15,  15, '2026-03-10');
 
 INSERT INTO StockIssuance (MaterialID, CleanerID, IssuedBy, Quantity, DateIssued, RemainingStock) VALUES
 (1,  1,  2, 5,  '2026-06-01 08:15:00', 45),
