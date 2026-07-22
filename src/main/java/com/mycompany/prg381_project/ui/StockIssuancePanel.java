@@ -93,13 +93,16 @@ public class StockIssuancePanel extends javax.swing.JPanel {
         issueStockbtn.addActionListener(this::issueStockbtnActionPerformed);
 
         backBtn.setText("Back to Dashboard");
-        backBtn.addActionListener(e -> { if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD); });
+        backBtn.addActionListener(this::backBtnActionPerformed);
 
-        javax.swing.JPanel contentPanel = new javax.swing.JPanel();
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -131,6 +134,7 @@ public class StockIssuancePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(backBtn)
                 .addGap(14, 14, 14)
                 .addComponent(stockIssuancelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,13 +158,11 @@ public class StockIssuancePanel extends javax.swing.JPanel {
                         .addComponent(issuanceLogScrlPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
-
-        setLayout(new java.awt.BorderLayout());
-        javax.swing.JPanel topBar = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-        topBar.add(backBtn);
-        add(topBar, java.awt.BorderLayout.NORTH);
-        add(contentPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD);
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * Reloads the Material/Cleaner dropdowns and the issuance log table.

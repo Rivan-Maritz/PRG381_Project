@@ -76,11 +76,10 @@ public class ReportsPanel extends javax.swing.JPanel {
         LogOutbtn.addActionListener(this::LogOutbtnActionPerformed);
 
         backBtn.setText("Back to Dashboard");
-        backBtn.addActionListener(e -> { if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD); });
+        backBtn.addActionListener(this::backBtnActionPerformed);
 
-        javax.swing.JPanel contentPanel = new javax.swing.JPanel();
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -101,10 +100,15 @@ public class ReportsPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogOutbtn)
                 .addGap(41, 41, 41))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(backBtn)
                 .addGap(45, 45, 45)
                 .addComponent(headingLabel)
                 .addGap(18, 18, 18)
@@ -118,13 +122,11 @@ public class ReportsPanel extends javax.swing.JPanel {
                 .addComponent(LogOutbtn)
                 .addGap(28, 28, 28))
         );
-
-        setLayout(new java.awt.BorderLayout());
-        javax.swing.JPanel topBar = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-        topBar.add(backBtn);
-        add(topBar, java.awt.BorderLayout.NORTH);
-        add(contentPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD);
+    }//GEN-LAST:event_backBtnActionPerformed
 
     private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
         if (mainFrame != null) {
@@ -190,6 +192,11 @@ public class ReportsPanel extends javax.swing.JPanel {
         reportTable.setModel(model);
     }
 
+    /**
+     * Total quantity issued per material, computed here in the UI layer by
+     * aggregating the issuance history and joining against the materials list
+     * (no dedicated SQL aggregate query exists for this yet).
+     */
     private void showMaterialUsageReport() {
         DefaultTableModel model = new DefaultTableModel(
             new String[]{"Material ID", "Material Name", "Total Quantity Issued"}, 0);
