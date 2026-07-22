@@ -32,6 +32,9 @@ public class ReportsPanel extends javax.swing.JPanel {
         tableScroll = new javax.swing.JScrollPane();
         reportTable = new javax.swing.JTable();
         reportTypeCombo = new javax.swing.JComboBox<>();
+        LogOutbtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(189, 224, 254));
 
         headingLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         headingLabel.setText("Reports");
@@ -39,6 +42,7 @@ public class ReportsPanel extends javax.swing.JPanel {
         reportTypeLabel.setText("Report type:");
 
         repGenerateBtn.setText("Generate");
+        repGenerateBtn.addActionListener(this::repGenerateBtnActionPerformed);
 
         reportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,6 +58,9 @@ public class ReportsPanel extends javax.swing.JPanel {
         tableScroll.setViewportView(reportTable);
 
         reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inventory Report", "Low-Stock Report", "Issuance History", "Material Usage Report" }));
+
+        LogOutbtn.setText("Log Out");
+        LogOutbtn.addActionListener(this::LogOutbtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,6 +80,10 @@ public class ReportsPanel extends javax.swing.JPanel {
                         .addGap(198, 198, 198)
                         .addComponent(headingLabel)))
                 .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LogOutbtn)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,12 +97,32 @@ public class ReportsPanel extends javax.swing.JPanel {
                     .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(tableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(LogOutbtn)
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
+        // TODO add your handling code here:
+
+        javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        parentFrame.getContentPane().removeAll();
+
+        parentFrame.getContentPane().add(new LoginPanel(), java.awt.BorderLayout.CENTER);
+
+        parentFrame.revalidate();
+        parentFrame.repaint();
+    }//GEN-LAST:event_LogOutbtnActionPerformed
+
+    private void repGenerateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenerateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_repGenerateBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LogOutbtn;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JButton repGenerateBtn;
     private javax.swing.JTable reportTable;

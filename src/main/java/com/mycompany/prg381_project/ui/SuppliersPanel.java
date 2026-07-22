@@ -41,6 +41,8 @@ public class SuppliersPanel extends javax.swing.JPanel {
         supNameTxt = new javax.swing.JTextField();
         supContactTxt = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(189, 224, 254));
+
         addSupBtn.setText("Add");
         addSupBtn.setName("addSupBtn"); // NOI18N
 
@@ -104,9 +106,8 @@ public class SuppliersPanel extends javax.swing.JPanel {
                     .addComponent(lblName)
                     .addComponent(clearSupBtn)
                     .addComponent(deleteSupBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(addSupBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateSupBtn, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(addSupBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateSupBtn)
                     .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUpdateButton)
                     .addComponent(lblDeleteButton)

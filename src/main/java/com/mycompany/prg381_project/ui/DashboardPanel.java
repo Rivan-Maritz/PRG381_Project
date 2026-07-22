@@ -41,29 +41,33 @@ public class DashboardPanel extends javax.swing.JPanel {
         NavViewReportbtn = new javax.swing.JButton();
         LogOutbtn = new javax.swing.JButton();
         SmarterCleanlbl = new javax.swing.JLabel();
+        Menulbl = new javax.swing.JLabel();
+        dashboardlbl = new javax.swing.JLabel();
 
-        TotalMaterialHeaderlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(189, 224, 254));
+
+        TotalMaterialHeaderlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         TotalMaterialHeaderlbl.setText("Total Materials: ");
 
-        LowStockHeaderlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LowStockHeaderlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         LowStockHeaderlbl.setText("Low-Stock Items: ");
 
-        TotalCleanersHeadlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalCleanersHeadlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         TotalCleanersHeadlbl.setText("Total Cleaners:");
 
-        RecentIssuanceslbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RecentIssuanceslbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         RecentIssuanceslbl.setText("Recent Issuances: ");
 
-        LowStockNumlnl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LowStockNumlnl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         LowStockNumlnl.setText("0");
 
-        TotalMatNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalMatNumlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         TotalMatNumlbl.setText("0");
 
-        TotalCleanersNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TotalCleanersNumlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         TotalCleanersNumlbl.setText("0");
 
-        RecentIssNumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RecentIssNumlbl.setFont(new java.awt.Font("Simplex_IV25", 0, 18)); // NOI18N
         RecentIssNumlbl.setText("0");
 
         NavManMaterialbtn.setText("Manage Materials");
@@ -84,53 +88,38 @@ public class DashboardPanel extends javax.swing.JPanel {
         LogOutbtn.setText("Log Out");
         LogOutbtn.addActionListener(this::LogOutbtnActionPerformed);
 
-        SmarterCleanlbl.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+        SmarterCleanlbl.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
         SmarterCleanlbl.setText("SMARTER CLEAN");
+
+        Menulbl.setFont(new java.awt.Font("Simplex_IV50", 1, 18)); // NOI18N
+        Menulbl.setText("Menu");
+
+        dashboardlbl.setFont(new java.awt.Font("Simplex_IV25", 1, 18)); // NOI18N
+        dashboardlbl.setText("Dashboard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 118, Short.MAX_VALUE)
-                .addComponent(NavManCleanersbtn)
-                .addGap(26, 26, 26)
-                .addComponent(NavManSuppliersbtn)
-                .addGap(18, 18, 18)
-                .addComponent(NavManMaterialbtn)
-                .addGap(18, 18, 18)
-                .addComponent(NavIssueStockbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(NavViewReportbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(NavViewReportbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NavManSuppliersbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NavManCleanersbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NavIssueStockbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NavManMaterialbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(Menulbl)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(LogOutbtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(TotalCleanersNumlbl)
-                                        .addGap(241, 241, 241))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(LowStockNumlnl)
-                                        .addGap(242, 242, 242)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TotalMatNumlbl)
-                                        .addGap(61, 61, 61))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(RecentIssNumlbl)
-                                        .addGap(55, 55, 55))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(LowStockHeaderlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,21 +127,51 @@ public class DashboardPanel extends javax.swing.JPanel {
                                 .addGap(97, 97, 97)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(TotalMaterialHeaderlbl)
-                                    .addComponent(RecentIssuanceslbl))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(RecentIssuanceslbl)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LogOutbtn)
+                                        .addGap(14, 14, 14))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(LowStockNumlnl))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(71, 71, 71)
+                                        .addComponent(TotalCleanersNumlbl)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TotalMatNumlbl)
+                                        .addGap(61, 61, 61))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(RecentIssNumlbl)
+                                        .addGap(55, 55, 55)))))
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(dashboardlbl)
+                        .addGap(299, 299, 299))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(LogOutbtn)
-                        .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(SmarterCleanlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Menulbl)
+                            .addComponent(dashboardlbl))
+                        .addGap(33, 33, 33)
+                        .addComponent(NavManCleanersbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(NavManSuppliersbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(NavManMaterialbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(NavIssueStockbtn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LowStockHeaderlbl)
                             .addComponent(TotalMaterialHeaderlbl))
@@ -167,15 +186,12 @@ public class DashboardPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TotalCleanersNumlbl)
-                            .addComponent(RecentIssNumlbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NavManCleanersbtn)
-                            .addComponent(NavManSuppliersbtn)
-                            .addComponent(NavManMaterialbtn)
-                            .addComponent(NavIssueStockbtn)
-                            .addComponent(NavViewReportbtn))
-                        .addGap(86, 86, 86))))
+                            .addComponent(RecentIssNumlbl))))
+                .addGap(18, 18, 18)
+                .addComponent(NavViewReportbtn)
+                .addGap(53, 53, 53)
+                .addComponent(LogOutbtn)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,29 +208,93 @@ public class DashboardPanel extends javax.swing.JPanel {
     
     
     private void NavManCleanersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManCleanersbtnActionPerformed
-        
-        
+
+                // 1. Find the MainFrame that holds everything
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    // 2. Wipe the current screen clear
+    parentFrame.getContentPane().removeAll();
+
+    // 3. Load the new screen (CHANGE THE CLASS NAME HERE)
+    parentFrame.getContentPane().add(new CleanersPanel(), java.awt.BorderLayout.CENTER);
+
+    // 4. Force the frame to refresh and show the new screen
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_NavManCleanersbtnActionPerformed
 
     private void NavViewReportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavViewReportbtnActionPerformed
         // TODO add your handling code here:
-        
+                    // 1. Find the MainFrame that holds everything
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    // 2. Wipe the current screen clear
+    parentFrame.getContentPane().removeAll();
+
+    // 3. Load the new screen (CHANGE THE CLASS NAME HERE)
+    parentFrame.getContentPane().add(new ReportsPanel(), java.awt.BorderLayout.CENTER);
+
+    // 4. Force the frame to refresh and show the new screen
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_NavViewReportbtnActionPerformed
 
     private void NavManSuppliersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManSuppliersbtnActionPerformed
         // TODO add your handling code here:
+                    // 1. Find the MainFrame that holds everything
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    // 2. Wipe the current screen clear
+    parentFrame.getContentPane().removeAll();
+
+    // 3. Load the new screen (CHANGE THE CLASS NAME HERE)
+    parentFrame.getContentPane().add(new SuppliersPanel(), java.awt.BorderLayout.CENTER);
+
+    // 4. Force the frame to refresh and show the new screen
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_NavManSuppliersbtnActionPerformed
 
     private void NavManMaterialbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavManMaterialbtnActionPerformed
-        // TODO add your handling code here:
+       
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+   
+    parentFrame.getContentPane().removeAll();
+
+    parentFrame.getContentPane().add(new MaterialsPanel(), java.awt.BorderLayout.CENTER);
+
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_NavManMaterialbtnActionPerformed
 
     private void NavIssueStockbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavIssueStockbtnActionPerformed
         // TODO add your handling code here:
+                // 1. Find the MainFrame that holds everything
+javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+// 2. Wipe the current screen clear
+parentFrame.getContentPane().removeAll();
+
+// 3. Load the new screen (CHANGE THE CLASS NAME HERE)
+parentFrame.getContentPane().add(new StockIssuancePanel(), java.awt.BorderLayout.CENTER);
+
+// 4. Force the frame to refresh and show the new screen
+parentFrame.revalidate();
+parentFrame.repaint();
     }//GEN-LAST:event_NavIssueStockbtnActionPerformed
 
     private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
         // TODO add your handling code here:
+    
+    javax.swing.JFrame parentFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    parentFrame.getContentPane().removeAll();
+
+    parentFrame.getContentPane().add(new LoginPanel(), java.awt.BorderLayout.CENTER);
+
+    parentFrame.revalidate();
+    parentFrame.repaint();
     }//GEN-LAST:event_LogOutbtnActionPerformed
 
 
@@ -245,6 +325,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JButton LogOutbtn;
     private javax.swing.JLabel LowStockHeaderlbl;
     private javax.swing.JLabel LowStockNumlnl;
+    private javax.swing.JLabel Menulbl;
     private javax.swing.JButton NavIssueStockbtn;
     private javax.swing.JButton NavManCleanersbtn;
     private javax.swing.JButton NavManMaterialbtn;
@@ -257,5 +338,6 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel TotalCleanersNumlbl;
     private javax.swing.JLabel TotalMatNumlbl;
     private javax.swing.JLabel TotalMaterialHeaderlbl;
+    private javax.swing.JLabel dashboardlbl;
     // End of variables declaration//GEN-END:variables
 }

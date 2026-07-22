@@ -58,6 +58,9 @@ public class MaterialsPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(materialsTable);
 
+        setBackground(new java.awt.Color(189, 224, 254));
+        setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
         nameLabel.setText("Name:");
 
         reorderLabel.setText("Reorder:");

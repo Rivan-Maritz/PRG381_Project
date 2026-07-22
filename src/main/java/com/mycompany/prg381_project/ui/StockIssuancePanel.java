@@ -37,6 +37,8 @@ public class StockIssuancePanel extends javax.swing.JPanel {
         spnQuantity = new javax.swing.JSpinner();
         issueStockbtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(189, 224, 254));
+
         stockIssuancelbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         stockIssuancelbl.setText("Stock Issuance");
 
