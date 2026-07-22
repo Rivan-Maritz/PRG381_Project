@@ -32,8 +32,8 @@ public class suppliersDAO {
             ps.setString(4, sm.getEmail());
             ps.setString(5, sm.getAddress());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
             return rows>0;
         }catch(SQLException ex)
         {
@@ -43,7 +43,7 @@ public class suppliersDAO {
     }
     public suppliersModel ReadSuppliers(int id)
     {
-        String sql = "SELECT * FROM Suppliers WHERE SuppliersID = ?";
+        String sql = "SELECT * FROM Suppliers WHERE SupplierID = ?";
             try
             {
                 Connection con = DBConnection.getConnection();
@@ -55,8 +55,8 @@ public class suppliersDAO {
                 if (rs.next()) {
                     return MapRowToSuppliers(rs);
                 }
-                con.close();
                 ps.close();
+                con.close();
                 
             }
                 
@@ -78,8 +78,8 @@ public class suppliersDAO {
             while (rs.next()) {
                 Suppliers.add(MapRowToSuppliers(rs));
             }
-            con.close();
             ps.close();
+            con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -100,8 +100,8 @@ public class suppliersDAO {
             ps.setString(5, sm.getAddress());
             ps.setInt(6, sm.getSupplierID());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
             return rows>0;
         }catch(SQLException ex)
         {
@@ -118,8 +118,8 @@ public class suppliersDAO {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 int rows = ps.executeUpdate();
-                con.close();
                 ps.close();
+                con.close();
                 return rows>0;
                 
             }catch(SQLException ex)

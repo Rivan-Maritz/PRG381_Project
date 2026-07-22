@@ -24,8 +24,8 @@ public class cleanersDAO {
             ps.setString(1, cl.getName());
             ps.setString(2, cl.getPhoneNumber());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
             return rows>0;
         }catch(SQLException ex)
         {
@@ -47,8 +47,8 @@ public class cleanersDAO {
                 if (rs.next()) {
                     return MapRowToCleaner(rs);
                 }
-                con.close();
                 ps.close();
+                con.close();
                 
             }
                 
@@ -70,8 +70,8 @@ public class cleanersDAO {
             while (rs.next()) {
                 cleaners.add(MapRowToCleaner(rs));
             }
-            con.close();
             ps.close();
+            con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -87,9 +87,10 @@ public class cleanersDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, cl.getName());
             ps.setString(2, cl.getPhoneNumber());
+            ps.setInt(3, cl.getID());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
             return rows>0;
         }catch(SQLException ex)
         {
@@ -106,8 +107,8 @@ public class cleanersDAO {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 int rows = ps.executeUpdate();
-                con.close();
-                ps.close();
+            ps.close();
+            con.close();
                 return rows>0;
                 
             }catch(SQLException ex)

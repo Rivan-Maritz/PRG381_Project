@@ -28,8 +28,8 @@ public class materialsDAO {
             ps.setInt(4, mm.getStock());
             ps.setDate(5, mm.getDateAdded());
             int rows = ps.executeUpdate();
-            con.close();
             ps.close();
+            con.close();
             return rows>0;
         }catch(SQLException ex)
         {
@@ -52,8 +52,8 @@ public class materialsDAO {
                 if (rs.next()) {
                     return mapRowToMaterial(rs);
                 }
-                con.close();
                 ps.close();
+                con.close();
                 
             }
                 
@@ -77,8 +77,8 @@ public class materialsDAO {
             while (rs.next()) {
                 materials.add(mapRowToMaterial(rs));
             }
-            con.close();
             ps.close();
+            con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -100,8 +100,8 @@ public class materialsDAO {
                 ps.setInt(4, mm.getStock());
                 ps.setInt(5, mm.getMaterialID());
                 int rows = ps.executeUpdate();
-                con.close();
                 ps.close();
+                con.close();
                 return rows>0;
                 
             }catch(SQLException ex)
@@ -119,8 +119,8 @@ public class materialsDAO {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, materialID);
                 int rows = ps.executeUpdate();
-                con.close();
                 ps.close();
+                con.close();
                 return rows>0;
                 
             }catch(SQLException ex)
