@@ -4,6 +4,12 @@
  */
 package com.mycompany.prg381_project.ui;
 
+//import com.mycompany.prg381_project.DAO.cleanersDAO;
+import com.mycompany.prg381_project.DAO.suppliersDAO;
+//import com.mycompany.prg381_project.model.cleanerModel;
+import com.mycompany.prg381_project.model.suppliersModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
@@ -40,21 +46,31 @@ public class SuppliersPanel extends javax.swing.JPanel {
         lblContact = new javax.swing.JLabel();
         supNameTxt = new javax.swing.JTextField();
         supContactTxt = new javax.swing.JTextField();
+        lblPhoneNumber = new javax.swing.JLabel();
+        supPhoneNumberTxt = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        supEmailTxt = new javax.swing.JTextField();
+        lblAddress = new javax.swing.JLabel();
+        supAddressTxt = new javax.swing.JTextField();
 
         addSupBtn.setText("Add");
         addSupBtn.setName("addSupBtn"); // NOI18N
+        addSupBtn.addActionListener(this::addSupBtnActionPerformed);
 
         lblClearButton.setText("Clear Button");
         lblClearButton.setName("lblClearButton"); // NOI18N
 
         updateSupBtn.setText("Update");
         updateSupBtn.setName("updateSupBtn"); // NOI18N
+        updateSupBtn.addActionListener(this::updateSupBtnActionPerformed);
 
         deleteSupBtn.setText("Delete");
         deleteSupBtn.setName("deleteSupBtn"); // NOI18N
+        deleteSupBtn.addActionListener(this::deleteSupBtnActionPerformed);
 
         clearSupBtn.setText("CLEAR");
         clearSupBtn.setName("clearSupBtn"); // NOI18N
+        clearSupBtn.addActionListener(this::clearSupBtnActionPerformed);
 
         lblAddButton.setText("Add Button");
         lblAddButton.setName("lblAddButton"); // NOI18N
@@ -92,6 +108,24 @@ public class SuppliersPanel extends javax.swing.JPanel {
         supContactTxt.setText("jTextField2");
         supContactTxt.setName("supContactTxt"); // NOI18N
 
+        lblPhoneNumber.setText("PhoneNumber");
+        lblPhoneNumber.setName("lblPhoneNumber"); // NOI18N
+
+        supPhoneNumberTxt.setText("jTextField1");
+        supPhoneNumberTxt.setName("supPhoneNumberTxt"); // NOI18N
+
+        lblEmail.setText("Email");
+        lblEmail.setName("lblEmail"); // NOI18N
+
+        supEmailTxt.setText("jTextField2");
+        supEmailTxt.setName("supEmailTxt"); // NOI18N
+
+        lblAddress.setText("Address");
+        lblAddress.setName("lblAddress"); // NOI18N
+
+        supAddressTxt.setText("jTextField3");
+        supAddressTxt.setName("supAddressTxt"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,29 +134,42 @@ public class SuppliersPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblName)
-                    .addComponent(clearSupBtn)
-                    .addComponent(deleteSupBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(addSupBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateSupBtn, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUpdateButton)
-                    .addComponent(lblDeleteButton)
-                    .addComponent(lblClearButton)
-                    .addComponent(lblContact)
-                    .addComponent(supNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(supContactTxt))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addSupBtn)
+                            .addComponent(updateSupBtn)
+                            .addComponent(lblUpdateButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(clearSupBtn)
+                            .addComponent(deleteSupBtn)
+                            .addComponent(lblDeleteButton)
+                            .addComponent(lblClearButton))
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblName)
+                            .addComponent(lblContact)
+                            .addComponent(supNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(supContactTxt)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblEmail)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblAddress))
+                            .addComponent(supPhoneNumberTxt)
+                            .addComponent(supEmailTxt)
+                            .addComponent(supAddressTxt))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(supNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,25 +177,117 @@ public class SuppliersPanel extends javax.swing.JPanel {
                         .addComponent(lblContact)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(supContactTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(lblAddButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPhoneNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addSupBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblUpdateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(updateSupBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblDeleteButton)
+                        .addComponent(supPhoneNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteSupBtn)
+                        .addComponent(supEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblClearButton)
-                        .addGap(10, 10, 10)
-                        .addComponent(clearSupBtn)))
+                        .addComponent(lblAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(supAddressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDeleteButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteSupBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblClearButton)
+                                .addGap(10, 10, 10)
+                                .addComponent(clearSupBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAddButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addSupBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblUpdateButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(updateSupBtn))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(60, 60, 60))
         );
     }// </editor-fold>//GEN-END:initComponents
+private void loadSuppliers(){
+
+    suppliersDAO dao=new suppliersDAO();
+
+    DefaultTableModel model=(DefaultTableModel)suppliersTable.getModel();
+
+    model.setRowCount(0);
+
+    for(suppliersModel s:dao.ReadSuppliers()){
+
+        model.addRow(new Object[]{
+            s.getSupplierID(),
+            s.getName(),
+            s.getContact()
+        });
+
+    }
+
+}
+    private void clearSupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearSupBtnActionPerformed
+        supNameTxt.setText("");
+        supContactTxt.setText("");    // TODO add your handling code here:
+    }//GEN-LAST:event_clearSupBtnActionPerformed
+
+    private void deleteSupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupBtnActionPerformed
+        int row=suppliersTable.getSelectedRow();
+
+        if(row==-1) return;
+
+        int id=Integer.parseInt(suppliersTable.getValueAt(row,0).toString());
+
+        suppliersDAO dao=new suppliersDAO();
+
+        dao.DeleteSuppliers(id);
+
+        loadSuppliers();     // TODO add your handling code here:
+    }//GEN-LAST:event_deleteSupBtnActionPerformed
+
+    private void addSupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupBtnActionPerformed
+    suppliersDAO s=new suppliersDAO();
+
+    s.setName(supNameTxt.getText());
+    s.setContact(supContactTxt.getText());
+//    s.setPhoneNumber(supPhoneNumberTxt.getText());
+//    s.setEmail(supEmailTxt.getText());
+//    s.setAddress(supAddressTxt.getText());
+
+    suppliersDAO dao=new suppliersDAO();
+
+    dao.CreateSuppliers(s);
+
+    loadSuppliers();         // TODO add your handling code here:
+    }//GEN-LAST:event_addSupBtnActionPerformed
+
+    private void updateSupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateSupBtnActionPerformed
+   int row = suppliersTable.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to update.");
+        return;
+    }
+
+    suppliersModel s = new suppliersModel();
+
+    s.setSupplierID(Integer.parseInt(suppliersTable.getValueAt(row, 0).toString()));
+    s.setName(supNameTxt.getText());
+    s.setContact(supContactTxt.getText());
+
+    suppliersDAO dao = new suppliersDAO();
+    dao.UpdateSuppliers(s);
+
+    javax.swing.JOptionPane.showMessageDialog(this, "Supplier updated successfully.");
+
+    loadSuppliers();         // TODO add your handling code here:
+    }//GEN-LAST:event_updateSupBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -157,13 +296,19 @@ public class SuppliersPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteSupBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddButton;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblClearButton;
     private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblDeleteButton;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblUpdateButton;
+    private javax.swing.JTextField supAddressTxt;
     private javax.swing.JTextField supContactTxt;
+    private javax.swing.JTextField supEmailTxt;
     private javax.swing.JTextField supNameTxt;
+    private javax.swing.JTextField supPhoneNumberTxt;
     private javax.swing.JTable suppliersTable;
     private javax.swing.JButton updateSupBtn;
     // End of variables declaration//GEN-END:variables

@@ -4,9 +4,12 @@
  */
 package com.mycompany.prg381_project.ui;
 
+import com.mycompany.prg381_project.DAO.cleanersDAO;
+import com.mycompany.prg381_project.model.cleanerModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author ASUS
+ * @author Tiisetso 
  */
 public class CleanersPanel extends javax.swing.JPanel {
 
@@ -29,7 +32,6 @@ public class CleanersPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         cleanersTable = new javax.swing.JTable();
         cleanerNameTxt = new javax.swing.JTextField();
-        cleanerDeptCombo = new javax.swing.JComboBox<>();
         lblName = new javax.swing.JLabel();
         lblDepartment = new javax.swing.JLabel();
         lblAddButton = new javax.swing.JLabel();
@@ -40,6 +42,7 @@ public class CleanersPanel extends javax.swing.JPanel {
         lblDeleteButton = new javax.swing.JLabel();
         deleteCleanerBtn = new javax.swing.JButton();
         clearCleanerBtn = new javax.swing.JButton();
+        cleanerNameTxt1 = new javax.swing.JTextField();
 
         cleanersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,16 +58,13 @@ public class CleanersPanel extends javax.swing.JPanel {
         cleanersTable.setName("cleanersTable"); // NOI18N
         jScrollPane1.setViewportView(cleanersTable);
 
-        cleanerNameTxt.setName("cleanerNameTxt"); // NOI18N
-
-        cleanerDeptCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cleanerDeptCombo.setName("cleanerDeptCombo"); // NOI18N
-        cleanerDeptCombo.addActionListener(this::cleanerDeptComboActionPerformed);
+        cleanerNameTxt.setName("PhoneNumberTxt"); // NOI18N
+        cleanerNameTxt.addActionListener(this::cleanerNameTxtActionPerformed);
 
         lblName.setText("Name:");
         lblName.setName("lblName"); // NOI18N
 
-        lblDepartment.setText("Department:");
+        lblDepartment.setText("Phone Number:");
         lblDepartment.setName("lblDepartment"); // NOI18N
 
         lblAddButton.setText("Add Button");
@@ -72,6 +72,7 @@ public class CleanersPanel extends javax.swing.JPanel {
 
         addCleanerBtn.setText("Add");
         addCleanerBtn.setName("addCleanerBtn"); // NOI18N
+        addCleanerBtn.addActionListener(this::addCleanerBtnActionPerformed);
 
         lblClearButton.setText("Clear Button");
         lblClearButton.setName("lblClearButton"); // NOI18N
@@ -81,15 +82,20 @@ public class CleanersPanel extends javax.swing.JPanel {
 
         updateCleanerBtn.setText("Update");
         updateCleanerBtn.setName("updateCleanerBtn"); // NOI18N
+        updateCleanerBtn.addActionListener(this::updateCleanerBtnActionPerformed);
 
         lblDeleteButton.setText("Delete Button");
         lblDeleteButton.setName("lblDeleteButton"); // NOI18N
 
         deleteCleanerBtn.setText("Delete");
         deleteCleanerBtn.setName("deleteCleanerBtn"); // NOI18N
+        deleteCleanerBtn.addActionListener(this::deleteCleanerBtnActionPerformed);
 
         clearCleanerBtn.setText("CLEAR");
         clearCleanerBtn.setName("clearCleanerBtn"); // NOI18N
+        clearCleanerBtn.addActionListener(this::clearCleanerBtnActionPerformed);
+
+        cleanerNameTxt1.setName("cleanerNameTxt"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,28 +104,30 @@ public class CleanersPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName)
                     .addComponent(lblDepartment)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(addCleanerBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(updateCleanerBtn, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblUpdateButton))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(clearCleanerBtn)
-                                .addComponent(deleteCleanerBtn)
-                                .addComponent(lblDeleteButton)
-                                .addComponent(lblClearButton)))
-                        .addComponent(cleanerNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cleanerDeptCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addCleanerBtn)
+                            .addComponent(updateCleanerBtn)
+                            .addComponent(lblAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUpdateButton))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(clearCleanerBtn)
+                            .addComponent(deleteCleanerBtn)
+                            .addComponent(lblDeleteButton)
+                            .addComponent(lblClearButton)))
+                    .addComponent(cleanerNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 15, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(492, 492, 492)
+                    .addComponent(cleanerNameTxt1)
+                    .addGap(11, 11, 11)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,13 +136,11 @@ public class CleanersPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cleanerNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(54, 54, 54)
                         .addComponent(lblDepartment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cleanerDeptCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122)
+                        .addGap(18, 18, 18)
+                        .addComponent(cleanerNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblDeleteButton)
@@ -156,18 +162,117 @@ public class CleanersPanel extends javax.swing.JPanel {
                         .addGap(23, 23, 23)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(69, 69, 69)
+                    .addComponent(cleanerNameTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(372, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+    private void loadCleaners(){
 
-    private void cleanerDeptComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanerDeptComboActionPerformed
+    cleanersDAO dao=new cleanersDAO();
+
+    DefaultTableModel model=(DefaultTableModel)cleanersTable.getModel();
+
+    model.setRowCount(0);
+
+    for (cleanerModel c : dao.ReadAllCleaners()) {
+
+     model.addRow(new Object[]{
+         c.getId(),
+         c.getName(),
+         c.getPhoneNumber()
+     });
+     }
+
+}
+    private void clearCleanerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearCleanerBtnActionPerformed
+    cleanerNameTxt.setText("");
+    cleanerNameTxt1.setText("");         // TODO add your handling code here:
+    }//GEN-LAST:event_clearCleanerBtnActionPerformed
+
+    private void deleteCleanerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCleanerBtnActionPerformed
+    int row = cleanersTable.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a cleaner to delete.");
+        return;
+    }
+
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to delete this cleaner?",
+            "Confirm Delete",
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+
+        int id = Integer.parseInt(cleanersTable.getValueAt(row, 0).toString());
+
+        cleanersDAO dao = new cleanersDAO();
+        dao.DeleteCleaner(id);
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Cleaner deleted successfully.");
+
+        loadCleaners();        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteCleanerBtnActionPerformed
+    }
+    private void addCleanerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCleanerBtnActionPerformed
+    cleanerModel cleaner = new cleanerModel();
+
+    cleaner.setName(cleanerNameTxt1.getText());
+    cleaner.setPhoneNumber(cleanerNameTxt.getText());
+
+    cleanersDAO dao = new cleanersDAO();
+
+    if (dao.CreateCleaner(cleaner)) {
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Cleaner added successfully.");
+
+        loadCleaners();
+
+        cleanerNameTxt1.setText("");
+        cleanerNameTxt.setText("");
+
+    } else {
+
+        javax.swing.JOptionPane.showMessageDialog(this,"Failed to add cleaner.");    // TODO add your handling code here:
+    }
+    }//GEN-LAST:event_addCleanerBtnActionPerformed
+
+    private void updateCleanerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCleanerBtnActionPerformed
+    int row = cleanersTable.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please select a cleaner to update.");
+        return;
+    }
+
+    cleanerModel c = new cleanerModel();
+
+    c.setId(Integer.parseInt(cleanersTable.getValueAt(row, 0).toString()));
+    c.setName(cleanerNameTxt1.getText());
+    c.setPhoneNumber(cleanerNameTxt.getText());
+
+    cleanersDAO dao = new cleanersDAO();
+    dao.UpdateCleaner(c);
+
+    javax.swing.JOptionPane.showMessageDialog(this, "Cleaner updated successfully.");
+
+    loadCleaners();        // TODO add your handling code here:
+    }//GEN-LAST:event_updateCleanerBtnActionPerformed
+
+    private void cleanerNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanerNameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cleanerDeptComboActionPerformed
+    }//GEN-LAST:event_cleanerNameTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCleanerBtn;
-    private javax.swing.JComboBox<String> cleanerDeptCombo;
     private javax.swing.JTextField cleanerNameTxt;
+    private javax.swing.JTextField cleanerNameTxt1;
     private javax.swing.JTable cleanersTable;
     private javax.swing.JButton clearCleanerBtn;
     private javax.swing.JButton deleteCleanerBtn;

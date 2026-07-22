@@ -20,33 +20,51 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="470" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                  <Component id="clearSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="addSupBtn" alignment="0" max="32767" attributes="0"/>
-                      <Component id="updateSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblAddButton" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="addSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="updateSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="clearSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteSupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDeleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblClearButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblAddButton" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="lblUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblDeleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblClearButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblContact" min="-2" max="-2" attributes="0"/>
-                  <Component id="supNameTxt" alignment="0" pref="175" max="32767" attributes="0"/>
-                  <Component id="supContactTxt" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblContact" min="-2" max="-2" attributes="0"/>
+                          <Component id="supNameTxt" alignment="0" pref="175" max="32767" attributes="0"/>
+                          <Component id="supContactTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="supPhoneNumberTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="supEmailTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="supAddressTxt" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="lblName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="supNameTxt" min="-2" max="-2" attributes="0"/>
@@ -54,22 +72,43 @@
                       <Component id="lblContact" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="supContactTxt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="lblAddButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addSupBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblUpdateButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="updateSupBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblDeleteButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="supPhoneNumberTxt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="deleteSupBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="supEmailTxt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblClearButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="clearSupBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="supAddressTxt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblDeleteButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="deleteSupBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblClearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="clearSupBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblAddButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="addSupBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblUpdateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="updateSupBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -83,6 +122,9 @@
         <Property name="text" type="java.lang.String" value="Add"/>
         <Property name="name" type="java.lang.String" value="addSupBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSupBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblClearButton">
       <Properties>
@@ -95,18 +137,27 @@
         <Property name="text" type="java.lang.String" value="Update"/>
         <Property name="name" type="java.lang.String" value="updateSupBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateSupBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="deleteSupBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
         <Property name="name" type="java.lang.String" value="deleteSupBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSupBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="clearSupBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="CLEAR"/>
         <Property name="name" type="java.lang.String" value="clearSupBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearSupBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAddButton">
       <Properties>
@@ -171,6 +222,42 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField2"/>
         <Property name="name" type="java.lang.String" value="supContactTxt" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPhoneNumber">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PhoneNumber"/>
+        <Property name="name" type="java.lang.String" value="lblPhoneNumber" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="supPhoneNumberTxt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="name" type="java.lang.String" value="supPhoneNumberTxt" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="name" type="java.lang.String" value="lblEmail" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="supEmailTxt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="name" type="java.lang.String" value="supEmailTxt" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAddress">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Address"/>
+        <Property name="name" type="java.lang.String" value="lblAddress" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="supAddressTxt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField3"/>
+        <Property name="name" type="java.lang.String" value="supAddressTxt" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

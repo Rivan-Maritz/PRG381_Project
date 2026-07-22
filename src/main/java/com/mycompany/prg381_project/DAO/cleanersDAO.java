@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author rivan
+ * @author Tiisetso
  */
 public class cleanersDAO {
     public boolean CreateCleaner(cleanerModel cl)

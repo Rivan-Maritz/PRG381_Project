@@ -19,34 +19,36 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblName" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDepartment" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="addCleanerBtn" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="updateCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblAddButton" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
-                              <Component id="lblUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="clearCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="deleteCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDeleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblClearButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="addCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="updateCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAddButton" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="lblUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cleanerNameTxt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cleanerDeptCombo" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="clearCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteCleanerBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDeleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblClearButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Component id="cleanerNameTxt" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="492" max="-2" attributes="0"/>
+                  <Component id="cleanerNameTxt1" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,13 +59,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cleanerNameTxt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Component id="lblDepartment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cleanerDeptCombo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cleanerNameTxt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblDeleteButton" min="-2" max="-2" attributes="0"/>
@@ -91,6 +91,13 @@
                   </Group>
               </Group>
               <EmptySpace pref="82" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                  <Component id="cleanerNameTxt1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="372" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,27 +127,11 @@
     </Container>
     <Component class="javax.swing.JTextField" name="cleanerNameTxt">
       <Properties>
-        <Property name="name" type="java.lang.String" value="cleanerNameTxt" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cleanerDeptCombo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-        <Property name="name" type="java.lang.String" value="cleanerDeptCombo" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="PhoneNumberTxt" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanerDeptComboActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanerNameTxtActionPerformed"/>
       </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblName">
       <Properties>
@@ -150,7 +141,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDepartment">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Department:"/>
+        <Property name="text" type="java.lang.String" value="Phone Number:"/>
         <Property name="name" type="java.lang.String" value="lblDepartment" noResource="true"/>
       </Properties>
     </Component>
@@ -165,6 +156,9 @@
         <Property name="text" type="java.lang.String" value="Add"/>
         <Property name="name" type="java.lang.String" value="addCleanerBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCleanerBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblClearButton">
       <Properties>
@@ -183,6 +177,9 @@
         <Property name="text" type="java.lang.String" value="Update"/>
         <Property name="name" type="java.lang.String" value="updateCleanerBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCleanerBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDeleteButton">
       <Properties>
@@ -195,11 +192,22 @@
         <Property name="text" type="java.lang.String" value="Delete"/>
         <Property name="name" type="java.lang.String" value="deleteCleanerBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteCleanerBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="clearCleanerBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="CLEAR"/>
         <Property name="name" type="java.lang.String" value="clearCleanerBtn" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearCleanerBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cleanerNameTxt1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="cleanerNameTxt" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
