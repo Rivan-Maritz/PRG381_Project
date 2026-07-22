@@ -44,10 +44,10 @@ public class suppliersDAO {
     public suppliersModel ReadSuppliers(int id)
     {
         String sql = "SELECT * FROM Suppliers WHERE SupplierID = ?";
-            try
+            try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))
             {
-                Connection con = DBConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
+                
                 ps.setInt(1, id);
                 
                 try (ResultSet rs = ps.executeQuery()) 

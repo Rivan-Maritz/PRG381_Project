@@ -36,10 +36,10 @@ public class cleanersDAO {
     public cleanerModel ReadCleanerByID(int id)
     {
         String sql = "SELECT * FROM Cleaners WHERE CleanerID = ?";
-            try
+            try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))
             {
-                Connection con = DBConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
+                
                 ps.setInt(1, id);
                 
                 try (ResultSet rs = ps.executeQuery()) 
@@ -47,8 +47,7 @@ public class cleanersDAO {
                 if (rs.next()) {
                     return MapRowToCleaner(rs);
                 }
-                ps.close();
-                con.close();
+                
                 
             }
                 
@@ -62,16 +61,16 @@ public class cleanersDAO {
     {
         List<cleanerModel> cleaners = new ArrayList<>();
         String sql = "SELECT * FROM Cleaners";
-        try  {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
+        try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))
+        {
+            
             ResultSet rs = ps.executeQuery();
  
             while (rs.next()) {
                 cleaners.add(MapRowToCleaner(rs));
             }
-            ps.close();
-            con.close();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

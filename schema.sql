@@ -33,6 +33,7 @@ CREATE TABLE Materials (
     MaterialName VARCHAR(100) NOT NULL,
     Type         VARCHAR(50),
     Stock        INT NOT NULL DEFAULT 0 CHECK (Stock >= 0),
+    ReorderLevel INT NOT NULL DEFAULT 10,
     DateAdded    DATE NOT NULL DEFAULT CURRENT_DATE,
     CONSTRAINT fk_material_supplier
         FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)

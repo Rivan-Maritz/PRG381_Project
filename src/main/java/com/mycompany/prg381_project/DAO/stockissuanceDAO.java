@@ -46,10 +46,10 @@ public class stockissuanceDAO {
     public stockissuanceModel ReadStockIssuance(int id)
     {
         String sql = "SELECT * FROM StockIssuance WHERE IssuanceID = ?";
-            try
+            try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))
             {
-                Connection con = DBConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
+                
                 ps.setInt(1, id);
                 
                 try (ResultSet rs = ps.executeQuery()) 
@@ -69,20 +69,20 @@ public class stockissuanceDAO {
             }
             return null;
     }
-    public List<stockissuanceModel> ReadAllCleaners()
+    public List<stockissuanceModel> ReadAllStockIssuance()
     {
         List<stockissuanceModel> StockIssuance = new ArrayList<>();
         String sql = "SELECT * FROM StockIssuance";
-        try  {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
+        try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))  
+        {
+            
             ResultSet rs = ps.executeQuery();
  
             while (rs.next()) {
                 StockIssuance.add(MapRowToStockIssuance(rs));
             }
-            ps.close();
-            con.close();
+            
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -90,7 +90,7 @@ public class stockissuanceDAO {
         return StockIssuance;
     }
         
-    public boolean UpdateCleaner(stockissuanceModel stm)
+    public boolean UpdateStockIssuance(stockissuanceModel stm)
     {
         String sql = "UPDATE StockIssuance SET MaterialID = ?, CleanerID = ?, IssuedBy = ?, Quantity = ?, RemainingStock = ?  WHERE IssuanceID = ?";
         try
@@ -101,7 +101,8 @@ public class stockissuanceDAO {
             ps.setInt(2, stm.getCleanerid());
             ps.setInt(3, stm.getIssuedby());
             ps.setInt(4, stm.getQuantity());
-            ps.setInt(5, stm.getIssuanceID());
+            ps.setInt(5, stm.getRemainingstock());
+            ps.setInt(6, stm.getIssuanceID());
             int rows = ps.executeUpdate();
             ps.close();
             con.close();
@@ -113,7 +114,7 @@ public class stockissuanceDAO {
             return false;
         }
     }
-    public boolean DeleteCleaner (int id)
+    public boolean DeleteStockIssuance (int id)
         {
             String sql = "DELETE FROM StockIssuance WHERE IssuanceID = ?";
             try

@@ -16,8 +16,8 @@ public class materialsDAO {
     public boolean CreateMetrial(materialsModel mm)
     {
         String sql = 
-                "INSERT INTO Materials(SupplierID,MaterialName,Type,Stock, DateAdded)"
-               + "VALUES(?,?,?,?,?)";
+                "INSERT INTO Materials(SupplierID,MaterialName,Type,Stock,ReorderLevel,DateAdded)"
+               + "VALUES(?,?,?,?,?,?)";
         try
         {
             Connection con = DBConnection.getConnection();
@@ -26,7 +26,8 @@ public class materialsDAO {
             ps.setString(2, mm.getMName());
             ps.setString(3,mm.getType());
             ps.setInt(4, mm.getStock());
-            ps.setDate(5, mm.getDateAdded());
+            ps.setInt(5, mm.getReorderLevel());
+            ps.setDate(6, mm.getDateAdded());
             int rows = ps.executeUpdate();
             ps.close();
             con.close();
@@ -41,10 +42,10 @@ public class materialsDAO {
         public materialsModel ReadMetrialByID(int materialID)
         {
             String sql = "SELECT * FROM Materials WHERE MaterialID = ?";
-            try
+            try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))
             {
-                Connection con = DBConnection.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
+                
                 ps.setInt(1, materialID);
                 
                 try (ResultSet rs = ps.executeQuery()) 
@@ -52,8 +53,7 @@ public class materialsDAO {
                 if (rs.next()) {
                     return mapRowToMaterial(rs);
                 }
-                ps.close();
-                con.close();
+                
                 
             }
                 
@@ -69,16 +69,16 @@ public class materialsDAO {
         List<materialsModel> materials = new ArrayList<>();
         String sql = "SELECT * FROM Materials ORDER BY MaterialID";
  
-        try  {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
+        try(Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql))  
+        {
+            
             ResultSet rs = ps.executeQuery();
  
             while (rs.next()) {
                 materials.add(mapRowToMaterial(rs));
             }
-            ps.close();
-            con.close();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class materialsDAO {
         public boolean UpdateMaterials(materialsModel mm)
         {
             String sql = "UPDATE Materials SET "
-                       + "SupplierID = ?,MaterialName = ?,Type = ?,Stock = ? "
+                       + "SupplierID = ?,MaterialName = ?,Type = ?,Stock = ? ,ReorderLevel = ? "
                        + "WHERE MaterialID = ? ";
             try
             {
@@ -98,7 +98,9 @@ public class materialsDAO {
                 ps.setString(2, mm.getMName());
                 ps.setString(3, mm.getType());
                 ps.setInt(4, mm.getStock());
+                ps.setInt(5, mm.getReorderLevel());
                 ps.setInt(5, mm.getMaterialID());
+                
                 int rows = ps.executeUpdate();
                 ps.close();
                 con.close();
@@ -129,6 +131,42 @@ public class materialsDAO {
                 return false;
             }
         }
+        public List<materialsModel> getLowStockMaterials() 
+        {
+            List<materialsModel> lowStock = new ArrayList<>();
+            String sql = "SELECT * FROM Materials WHERE Stock <= ReorderLevel ORDER BY Stock";
+            try (Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) 
+                {
+                lowStock.add(mapRowToMaterial(rs));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return lowStock;
+        }
+        
+        public List<materialsModel> searchMaterialsByName(String keyword) 
+        {
+            List<materialsModel> results = new ArrayList<>();
+            String sql = "SELECT * FROM Materials WHERE MaterialName ILIKE ? ORDER BY MaterialName";
+            try (Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, "%" + keyword + "%");
+                try (ResultSet rs = ps.executeQuery()) 
+                {
+                    while (rs.next()) 
+                    {
+                        results.add(mapRowToMaterial(rs));
+                    }
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return results;
+        }
         //mapping
         private materialsModel mapRowToMaterial(ResultSet rs) throws SQLException {
         materialsModel m = new materialsModel();
@@ -138,6 +176,7 @@ public class materialsDAO {
         m.setType(rs.getString("Type"));
         m.setStock(rs.getInt("Stock"));
         m.setDateAdded(rs.getDate("DateAdded"));
+        m.setReorderLevel(rs.getInt("ReorderLevel"));
         return m;
     }
     }

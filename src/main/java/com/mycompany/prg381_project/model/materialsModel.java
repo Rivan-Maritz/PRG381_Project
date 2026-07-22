@@ -10,14 +10,25 @@ public class materialsModel {
     private String type;
     private int stock;
     private Date dateAdded;
+    private int reorderLevel;
     public materialsModel(){}
-    public materialsModel(int materialID,int supplierid, String MName, String type, int stock, Date dateAdded) {
+    public materialsModel(int materialID,int supplierid, String MName, String type, int stock, Date dateAdded,int reorderLevel) {
         this.materialID = materialID;
         this.supplierid = supplierid;
         this.MName = MName;
         this.type = type;
         this.stock = stock;
         this.dateAdded = dateAdded;
+        this.reorderLevel = reorderLevel;
+        
+    }
+
+    public int getReorderLevel() {
+        return reorderLevel;
+    }
+
+    public void setReorderLevel(int reorderLevel) {
+        this.reorderLevel = reorderLevel;
     }
 
     public int getMaterialID() {
