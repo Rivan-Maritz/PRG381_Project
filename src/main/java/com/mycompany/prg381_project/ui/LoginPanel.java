@@ -4,24 +4,27 @@
  */
 package com.mycompany.prg381_project.ui;
 
+import com.mycompany.prg381_project.BusinessLayer.UsersService;
+import com.mycompany.prg381_project.BusinessLayer.exceptions.BusinessException;
+
 /**
  *
  * @author ASUS
  */
 public class LoginPanel extends javax.swing.JPanel {
 
-    
-    private MainFrame parentFrame;
+    private MainFrame mainFrame;
+    private final UsersService usersService = new UsersService();
+
     /**
      * Creates new form LoginPanel
      */
     public LoginPanel() {
         initComponents();
     }
-    
-    public LoginPanel(MainFrame parentFrame) {
-        this();
-        this.parentFrame = parentFrame;
+
+    public void setMainFrame(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
     }
 
     /**
@@ -33,21 +36,171 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        usernametxtfld = new javax.swing.JTextField();
+        loginbtn = new javax.swing.JButton();
+        clearbtn = new javax.swing.JButton();
+        registerbtn = new javax.swing.JButton();
+        usernamelbl = new javax.swing.JLabel();
+        passwordlbl = new javax.swing.JLabel();
+        systemloginHeadlbl = new javax.swing.JLabel();
+        passwordPwdfld = new javax.swing.JPasswordField();
+        lblWelcome = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(189, 224, 254));
         setName("LoginPanel"); // NOI18N
+
+        loginbtn.setText("Login");
+        loginbtn.addActionListener(this::loginbtnActionPerformed);
+
+        clearbtn.setText("Clear");
+        clearbtn.addActionListener(this::clearbtnActionPerformed);
+
+        registerbtn.setText("Register");
+        registerbtn.addActionListener(this::registerbtnActionPerformed);
+
+        usernamelbl.setText("Username");
+
+        passwordlbl.setText("Password");
+
+        systemloginHeadlbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        systemloginHeadlbl.setText("System Login");
+
+        lblWelcome.setFont(new java.awt.Font("Simplex_IV50", 1, 36)); // NOI18N
+        lblWelcome.setText("Welcome to Smarter Clean");
+
+        exitBtn.setText("Exit ");
+        exitBtn.addActionListener(this::exitBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitBtn)
+                .addGap(74, 74, 74))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(systemloginHeadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(usernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(passwordlbl, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(usernametxtfld)
+                                            .addComponent(passwordPwdfld, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(24, 24, 24))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(loginbtn)
+                                .addGap(30, 30, 30)
+                                .addComponent(clearbtn)
+                                .addGap(30, 30, 30)
+                                .addComponent(registerbtn))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(systemloginHeadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernametxtfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernamelbl))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordlbl)
+                    .addComponent(passwordPwdfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearbtn)
+                    .addComponent(loginbtn)
+                    .addComponent(registerbtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addComponent(exitBtn)
+                .addGap(69, 69, 69))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
+        usernametxtfld.setText("");
+        passwordPwdfld.setText("");
+        usernametxtfld.requestFocus();
+    }//GEN-LAST:event_clearbtnActionPerformed
+
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
+        String username = usernametxtfld.getText().trim();
+        String password = new String(passwordPwdfld.getPassword());
+
+        try {
+            boolean success = usersService.login(username, password);
+            if (!success) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "Incorrect username or password.",
+                    "Login Failed",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                passwordPwdfld.setText("");
+                return;
+            }
+        } catch (BusinessException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(),
+                "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int userId = usersService.getUserId(username);
+        if (mainFrame != null) {
+            mainFrame.setCurrentUser(username, userId);
+        }
+
+        usernametxtfld.setText("");
+        passwordPwdfld.setText("");
+
+        if (mainFrame != null) {
+            mainFrame.showPanel(MainFrame.DASHBOARD);
+        }
+    }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
+        java.awt.Window window = javax.swing.SwingUtilities.getWindowAncestor(this);
+        java.awt.Frame owner = (window instanceof java.awt.Frame) ? (java.awt.Frame) window : null;
+        RegisterDialog dialog = new RegisterDialog(owner);
+        dialog.setVisible(true);
+
+        if (dialog.wasRegistered()) {
+            usernametxtfld.requestFocus();
+        }
+    }//GEN-LAST:event_registerbtnActionPerformed
+
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearbtn;
+    private javax.swing.JButton exitBtn;
+    private javax.swing.JLabel lblWelcome;
+    private javax.swing.JButton loginbtn;
+    private javax.swing.JPasswordField passwordPwdfld;
+    private javax.swing.JLabel passwordlbl;
+    private javax.swing.JButton registerbtn;
+    private javax.swing.JLabel systemloginHeadlbl;
+    private javax.swing.JLabel usernamelbl;
+    private javax.swing.JTextField usernametxtfld;
     // End of variables declaration//GEN-END:variables
 }

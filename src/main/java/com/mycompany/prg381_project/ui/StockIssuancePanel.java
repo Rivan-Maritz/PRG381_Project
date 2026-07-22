@@ -4,17 +4,42 @@
  */
 package com.mycompany.prg381_project.ui;
 
+import com.mycompany.prg381_project.BusinessLayer.StockIssuanceService;
+import com.mycompany.prg381_project.BusinessLayer.exceptions.BusinessException;
+import com.mycompany.prg381_project.model.cleanerModel;
+import com.mycompany.prg381_project.model.materialsModel;
+import com.mycompany.prg381_project.model.stockissuanceModel;
+
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
  */
 public class StockIssuancePanel extends javax.swing.JPanel {
 
+    private MainFrame mainFrame;
+    private final StockIssuanceService stockIssuanceService = new StockIssuanceService();
+
+    /** Combo box entries carry the real ID while displaying a readable label. */
+    private static class ComboItem {
+        final int id;
+        final String label;
+        ComboItem(int id, String label) { this.id = id; this.label = label; }
+        @Override public String toString() { return label; }
+    }
+
     /**
      * Creates new form StockIssuancePanel
      */
     public StockIssuancePanel() {
         initComponents();
+    }
+
+    public void setMainFrame(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
     }
 
     /**
@@ -36,39 +61,43 @@ public class StockIssuancePanel extends javax.swing.JPanel {
         issuanceLogtbl = new javax.swing.JTable();
         spnQuantity = new javax.swing.JSpinner();
         issueStockbtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(189, 224, 254));
 
         stockIssuancelbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         stockIssuancelbl.setText("Stock Issuance");
-
-        cmbCleaner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCleaner.addActionListener(this::cmbCleanerActionPerformed);
 
         selectStafflbl.setText("Select staff/cleaner");
 
         selectMaterialslbl.setText("Select Material");
 
-        cmbMaterials.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         quantitylbl.setText("Quantity");
 
+        spnQuantity.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100000, 1));
+
         issuanceLogtbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Issue ID", "Cleaner Name", "Material", "Quantity"
+                "Issue ID", "Cleaner Name", "Material", "Quantity", "Date Issued", "Remaining Stock"
             }
-        ));
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
         issuanceLogScrlPnl.setViewportView(issuanceLogtbl);
 
         issueStockbtn.setText("Issue Stock");
         issueStockbtn.addActionListener(this::issueStockbtnActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        backBtn.setText("Back to Dashboard");
+        backBtn.addActionListener(e -> { if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD); });
+
+        javax.swing.JPanel contentPanel = new javax.swing.JPanel();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -125,20 +154,91 @@ public class StockIssuancePanel extends javax.swing.JPanel {
                         .addComponent(issuanceLogScrlPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        setLayout(new java.awt.BorderLayout());
+        javax.swing.JPanel topBar = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        topBar.add(backBtn);
+        add(topBar, java.awt.BorderLayout.NORTH);
+        add(contentPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbCleanerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCleanerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCleanerActionPerformed
+    /**
+     * Reloads the Material/Cleaner dropdowns and the issuance log table.
+     * Called at startup and by MainFrame every time this panel is navigated to,
+     * so the dropdowns always reflect current stock and never go stale.
+     */
+    public void refreshData() {
+        loadMaterialsCombo();
+        loadCleanersCombo();
+        loadIssuanceLog();
+    }
+
+    private void loadMaterialsCombo() {
+        DefaultComboBoxModel<ComboItem> model = new DefaultComboBoxModel<>();
+        for (materialsModel m : stockIssuanceService.getAllMaterials()) {
+            model.addElement(new ComboItem(m.getMaterialID(),
+                m.getMName() + " (in stock: " + m.getStock() + ")"));
+        }
+        cmbMaterials.setModel(model);
+    }
+
+    private void loadCleanersCombo() {
+        DefaultComboBoxModel<ComboItem> model = new DefaultComboBoxModel<>();
+        for (cleanerModel c : stockIssuanceService.getAllCleaners()) {
+            model.addElement(new ComboItem(c.getID(), c.getName()));
+        }
+        cmbCleaner.setModel(model);
+    }
+
+    private void loadIssuanceLog() {
+        DefaultTableModel model = (DefaultTableModel) issuanceLogtbl.getModel();
+        model.setRowCount(0);
+
+        List<stockissuanceModel> records = stockIssuanceService.getIssuanceHistory();
+        for (stockissuanceModel r : records) {
+            materialsModel mat = stockIssuanceService.getMaterialById(r.getMaterialid());
+            cleanerModel cl = stockIssuanceService.getCleanerById(r.getCleanerid());
+            model.addRow(new Object[]{
+                r.getIssuanceID(),
+                cl != null ? cl.getName() : ("#" + r.getCleanerid()),
+                mat != null ? mat.getMName() : ("#" + r.getMaterialid()),
+                r.getQuantity(),
+                r.getDateIssued(),
+                r.getRemainingstock()
+            });
+        }
+    }
 
     private void issueStockbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueStockbtnActionPerformed
-        // TODO add your handling code here:
+        ComboItem selectedMaterial = (ComboItem) cmbMaterials.getSelectedItem();
+        ComboItem selectedCleaner = (ComboItem) cmbCleaner.getSelectedItem();
+
+        if (selectedMaterial == null || selectedCleaner == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Please select both a material and a cleaner. If either list is empty, add one first on its own screen.",
+                "Validation Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int quantity = (Integer) spnQuantity.getValue();
+        int issuedBy = (mainFrame != null) ? mainFrame.getCurrentUserId() : -1;
+
+        try {
+            stockIssuanceService.issueStock(selectedMaterial.id, selectedCleaner.id, issuedBy, quantity);
+            javax.swing.JOptionPane.showMessageDialog(this, "Stock issued successfully.");
+            spnQuantity.setValue(1);
+            refreshData();
+        } catch (BusinessException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            refreshData();
+        }
     }//GEN-LAST:event_issueStockbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbCleaner;
-    private javax.swing.JComboBox<String> cmbMaterials;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JComboBox<ComboItem> cmbCleaner;
+    private javax.swing.JComboBox<ComboItem> cmbMaterials;
     private javax.swing.JScrollPane issuanceLogScrlPnl;
     private javax.swing.JTable issuanceLogtbl;
     private javax.swing.JButton issueStockbtn;

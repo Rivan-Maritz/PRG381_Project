@@ -1,80 +1,149 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.prg381_project.ui;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
+/**
+ * MainFrame hosts every screen as a single reused instance inside a
+ * CardLayout. Panels never create new instances of each other for
+ * navigation - they call mainFrame.showPanel("NAME") instead, which also
+ * refreshes that panel's data from the database before showing it.
+ *
+ * @author rivan
+ */
 public class MainFrame extends javax.swing.JFrame {
 
-    private CardLayout cardlayout;
-    private JPanel jpanel;
-    
+    public static final String LOGIN = "LOGIN";
+    public static final String DASHBOARD = "DASHBOARD";
+    public static final String MATERIALS = "MATERIALS";
+    public static final String SUPPLIERS = "SUPPLIERS";
+    public static final String CLEANERS = "CLEANERS";
+    public static final String STOCK_ISSUANCE = "STOCK_ISSUANCE";
+    public static final String REPORTS = "REPORTS";
+
+    private final CardLayout cardLayout;
+    private final JPanel container;
+
+    private final LoginPanel loginPanel;
+    private final DashboardPanel dashboardPanel;
+    private final MaterialsPanel materialsPanel;
+    private final SuppliersPanel suppliersPanel;
+    private final CleanersPanel cleanersPanel;
+    private final StockIssuancePanel stockIssuancePanel;
+    private final ReportsPanel reportsPanel;
+
+    // Simple session tracking: who is currently logged in.
+    // (Full role-based access control is a separate, later task.)
+    private int currentUserId = -1;
+    private String currentUsername = null;
+
     public MainFrame() {
         initComponents();
-        
-        cardlayout = new CardLayout();
-        jpanel = new JPanel(cardlayout);
-        
-        jpanel.add(new LoginPanel(this), "LOGIN");
-        jpanel.add(new DashboardPanel(), "DASHBOARD");
-        jpanel.add(new MaterialsPanel(), "MATERIALS");
-        jpanel.add(new SuppliersPanel(), "SUPPLIERS");
-        jpanel.add(new CleanersPanel(), "CLEANERS");
-        jpanel.add(new StockIssuancePanel(), "STOCK_ISSUANCE");
-        jpanel.add(new ReportsPanel(), "REPORTS");
-        
-        setContentPane(jpanel);
-        
-        cardlayout.show(jpanel, "LOGIN");
-    }
-
-    public void showPanel(String name){
-        cardlayout.show(jpanel, name);
-    }
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        contentContainer = new javax.swing.JPanel();
-
+        setTitle("Smarter Clean - University Cleaning Inventory & Issuance System");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout contentContainerLayout = new javax.swing.GroupLayout(contentContainer);
-        contentContainer.setLayout(contentContainerLayout);
-        contentContainerLayout.setHorizontalGroup(
-            contentContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        contentContainerLayout.setVerticalGroup(
-            contentContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
+        cardLayout = new CardLayout();
+        container = new JPanel(cardLayout);
+
+        loginPanel = new LoginPanel();
+        dashboardPanel = new DashboardPanel();
+        materialsPanel = new MaterialsPanel();
+        suppliersPanel = new SuppliersPanel();
+        cleanersPanel = new CleanersPanel();
+        stockIssuancePanel = new StockIssuancePanel();
+        reportsPanel = new ReportsPanel();
+
+        loginPanel.setMainFrame(this);
+        dashboardPanel.setMainFrame(this);
+        materialsPanel.setMainFrame(this);
+        suppliersPanel.setMainFrame(this);
+        cleanersPanel.setMainFrame(this);
+        stockIssuancePanel.setMainFrame(this);
+        reportsPanel.setMainFrame(this);
+
+        container.add(loginPanel, LOGIN);
+        container.add(dashboardPanel, DASHBOARD);
+        container.add(materialsPanel, MATERIALS);
+        container.add(suppliersPanel, SUPPLIERS);
+        container.add(cleanersPanel, CLEANERS);
+        container.add(stockIssuancePanel, STOCK_ISSUANCE);
+        container.add(reportsPanel, REPORTS);
+
+        setContentPane(container);
+        cardLayout.show(container, LOGIN);
+
+        setSize(900, 650);
+        setLocationRelativeTo(null);
+    }
+
+    /**
+     * Switches to the named panel, refreshing its data from the database
+     * first so it never shows stale information from a previous visit.
+     */
+    public void showPanel(String name) {
+        switch (name) {
+            case DASHBOARD:
+                dashboardPanel.refreshStats();
+                break;
+            case MATERIALS:
+                materialsPanel.refreshTable();
+                break;
+            case SUPPLIERS:
+                suppliersPanel.refreshTable();
+                break;
+            case CLEANERS:
+                cleanersPanel.refreshTable();
+                break;
+            case STOCK_ISSUANCE:
+                stockIssuancePanel.refreshData();
+                break;
+            case REPORTS:
+                // Reports panel loads on-demand via its own Generate button.
+                break;
+            default:
+                break;
+        }
+        cardLayout.show(container, name);
+    }
+
+    public void setCurrentUser(String username, int userId) {
+        this.currentUsername = username;
+        this.currentUserId = userId;
+    }
+
+    public void clearCurrentUser() {
+        this.currentUsername = null;
+        this.currentUserId = -1;
+    }
+
+    public int getCurrentUserId() {
+        return currentUserId;
+    }
+
+    public String getCurrentUsername() {
+        return currentUsername;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(contentContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(contentContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -85,13 +154,7 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contentContainer;
-    // End of variables declaration//GEN-END:variables
 }

@@ -94,4 +94,23 @@ public class usersDAO {
             return true;
         }
     }
+
+    // Returns the UserID for a given username, or -1 if not found.
+    // Used after a successful login so the session can track who is
+    // currently logged in (needed for StockIssuance.IssuedBy).
+    public int getUserIdByUsername(String username) {
+        String sql = "SELECT UserID FROM Users WHERE Username = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("UserID");
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+    }
 }

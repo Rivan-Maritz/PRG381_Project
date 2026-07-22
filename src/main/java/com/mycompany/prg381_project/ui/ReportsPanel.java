@@ -4,17 +4,36 @@
  */
 package com.mycompany.prg381_project.ui;
 
+import com.mycompany.prg381_project.BusinessLayer.ReportsService;
+import com.mycompany.prg381_project.model.materialsModel;
+import com.mycompany.prg381_project.model.stockissuanceModel;
+
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
  */
 public class ReportsPanel extends javax.swing.JPanel {
 
+    private MainFrame mainFrame;
+    private final ReportsService reportsService = new ReportsService();
+
+    private static final String INVENTORY = "Inventory Report";
+    private static final String LOW_STOCK = "Low-Stock Report";
+    private static final String ISSUANCE_HISTORY = "Issuance History";
+    private static final String USAGE = "Material Usage Report";
+
     /**
      * Creates new form ReportsPanel
      */
     public ReportsPanel() {
         initComponents();
+    }
+
+    public void setMainFrame(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
     }
 
     /**
@@ -32,6 +51,10 @@ public class ReportsPanel extends javax.swing.JPanel {
         tableScroll = new javax.swing.JScrollPane();
         reportTable = new javax.swing.JTable();
         reportTypeCombo = new javax.swing.JComboBox<>();
+        LogOutbtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(189, 224, 254));
 
         headingLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         headingLabel.setText("Reports");
@@ -39,24 +62,25 @@ public class ReportsPanel extends javax.swing.JPanel {
         reportTypeLabel.setText("Report type:");
 
         repGenerateBtn.setText("Generate");
+        repGenerateBtn.addActionListener(this::repGenerateBtnActionPerformed);
 
         reportTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+            new Object [][] {},
+            new String [] {}
         ));
         tableScroll.setViewportView(reportTable);
 
-        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inventory Report", "Low-Stock Report", "Issuance History", "Material Usage Report" }));
+        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { INVENTORY, LOW_STOCK, ISSUANCE_HISTORY, USAGE }));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        LogOutbtn.setText("Log Out");
+        LogOutbtn.addActionListener(this::LogOutbtnActionPerformed);
+
+        backBtn.setText("Back to Dashboard");
+        backBtn.addActionListener(e -> { if (mainFrame != null) mainFrame.showPanel(MainFrame.DASHBOARD); });
+
+        javax.swing.JPanel contentPanel = new javax.swing.JPanel();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -73,6 +97,10 @@ public class ReportsPanel extends javax.swing.JPanel {
                         .addGap(198, 198, 198)
                         .addComponent(headingLabel)))
                 .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LogOutbtn)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,12 +114,95 @@ public class ReportsPanel extends javax.swing.JPanel {
                     .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(tableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(LogOutbtn)
+                .addGap(28, 28, 28))
         );
+
+        setLayout(new java.awt.BorderLayout());
+        javax.swing.JPanel topBar = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        topBar.add(backBtn);
+        add(topBar, java.awt.BorderLayout.NORTH);
+        add(contentPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LogOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutbtnActionPerformed
+        if (mainFrame != null) {
+            mainFrame.clearCurrentUser();
+            mainFrame.showPanel(MainFrame.LOGIN);
+        }
+    }//GEN-LAST:event_LogOutbtnActionPerformed
+
+    private void repGenerateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenerateBtnActionPerformed
+        String reportType = (String) reportTypeCombo.getSelectedItem();
+        if (reportType == null) return;
+
+        switch (reportType) {
+            case INVENTORY:
+                showInventoryReport();
+                break;
+            case LOW_STOCK:
+                showLowStockReport();
+                break;
+            case ISSUANCE_HISTORY:
+                showIssuanceHistoryReport();
+                break;
+            case USAGE:
+                showMaterialUsageReport();
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_repGenerateBtnActionPerformed
+
+    private void showInventoryReport() {
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ID", "Name", "Type", "Stock", "Reorder Level", "Date Added"}, 0);
+        List<materialsModel> materials = reportsService.getInventoryReport();
+        for (materialsModel m : materials) {
+            model.addRow(new Object[]{
+                m.getMaterialID(), m.getMName(), m.getType(), m.getStock(), m.getReorderLevel(), m.getDateAdded()
+            });
+        }
+        reportTable.setModel(model);
+    }
+
+    private void showLowStockReport() {
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ID", "Name", "Stock", "Reorder Level", "Shortfall"}, 0);
+        for (materialsModel m : reportsService.getLowStockReport()) {
+            int shortfall = Math.max(m.getReorderLevel() - m.getStock(), 0);
+            model.addRow(new Object[]{ m.getMaterialID(), m.getMName(), m.getStock(), m.getReorderLevel(), shortfall });
+        }
+        reportTable.setModel(model);
+    }
+
+    private void showIssuanceHistoryReport() {
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"Issue ID", "Material ID", "Cleaner ID", "Issued By (User ID)", "Quantity", "Date Issued", "Remaining Stock"}, 0);
+        List<stockissuanceModel> records = reportsService.getIssuanceHistoryReport();
+        for (stockissuanceModel r : records) {
+            model.addRow(new Object[]{
+                r.getIssuanceID(), r.getMaterialid(), r.getCleanerid(), r.getIssuedby(),
+                r.getQuantity(), r.getDateIssued(), r.getRemainingstock()
+            });
+        }
+        reportTable.setModel(model);
+    }
+
+    private void showMaterialUsageReport() {
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"Material ID", "Material Name", "Total Quantity Issued"}, 0);
+        for (ReportsService.MaterialUsageRow row : reportsService.getMaterialUsageReport()) {
+            model.addRow(new Object[]{ row.materialId, row.materialName, row.totalIssued });
+        }
+        reportTable.setModel(model);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LogOutbtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JButton repGenerateBtn;
     private javax.swing.JTable reportTable;
