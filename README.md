@@ -1,5 +1,6 @@
 # University Cleaning Inventory & Issuance System
 
+Github Link: https://github.com/Rivan-Maritz/PRG381_Project
 A Java desktop application developed for **Programming 3(7)(8)1** at Belgium Campus iTversity, implementing **Track B** of the group project specification: a full-featured inventory and issuance management system for university cleaning materials, suppliers, and cleaners.
 
 ---
